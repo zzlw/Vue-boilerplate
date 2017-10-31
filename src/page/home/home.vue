@@ -1,6 +1,7 @@
 <template>
   	<div>
-        <p class="text">{{ msg }}</p>
+      <p class="text">{{ msg }}</p>
+      <p class="coding">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
     </div>
 </template>
 
@@ -40,5 +41,12 @@ export default {
       font-size: rem(46);
       color: #00CCFF;
       text-align: center;
+    }
+    .coding{
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      color: #ccc;
     }
 </style>
