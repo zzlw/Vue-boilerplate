@@ -1,21 +1,21 @@
-# boy-friend
+# vue-boilerplate
 
-> A Vue.js project
+> 一个基于 Vue 官方脚手架改造的脚手架
 
-## Build Setup
+## 开始
 
 ``` bash
-# install dependencies
+# 安装依赖项
 npm install
 
-# serve with hot reload at localhost:8080
+# 打开开发模式 localhost:8080
 npm run dev
 
-# build for production with minification
+# 打开生产模式 发布代码
 npm run build
 
-# build for production and view the bundle analyzer report
+# 编译代码和查看生产分析报告
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+想要获取更多更详细 [vue-boilerplate](https://coding.net/u/babybk/p/vue-boilerplate/) 内容，请访问我的 [github](http://github.com/zzlw/).

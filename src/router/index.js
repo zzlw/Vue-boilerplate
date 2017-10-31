@@ -21,6 +21,7 @@ export default new Router({
     }
   ],
   mode : routerMode,
+  strict : process.env.NODE_ENV !== 'production',
 })
 
 
