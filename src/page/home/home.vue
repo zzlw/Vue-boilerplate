@@ -1,6 +1,6 @@
 <template>
   	<div>
-        <h1>我是df一个导航</h1>
+        <p class="text">{{ msg }}</p>
     </div>
 </template>
 
@@ -8,10 +8,7 @@
 export default {
     data(){
         return{
-            guessCity: '',   //当前城市
-            guessCityid: '', //当前城市id
-            hotcity: [],     //热门城市列表
-            groupcity: {},   //所有城市列表
+            msg: '集成 Vuex Vue-router http* 等等，让你专注于快速构建业务！',
         }
     },
 
@@ -30,9 +27,7 @@ export default {
 
     methods:{
         //点击图标刷新页面
-        reload(){
-            window.location.reload();
-        }
+
     },
 }
 
@@ -40,11 +35,10 @@ export default {
 
 <style lang="scss" scoped>
     @import '../../style/mixin';
-    .head_logo{
-        left: 0.4rem;
-        font-weight: 400;
-        @include sc(0.7rem, #fff);
-        @include wh(2.3rem, 0.7rem);
-        @include ct;
+    .text{
+      padding: rem(30);
+      font-size: rem(46);
+      color: #00CCFF;
+      text-align: center;
     }
 </style>

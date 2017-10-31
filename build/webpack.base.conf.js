@@ -21,10 +21,9 @@ module.exports = {
   },
   resolve: {
     extensions : [
-      '',
       '.js',
       '.vue',
-      '.less',
+      '.json',
       '.css',
       '.scss'
     ],
