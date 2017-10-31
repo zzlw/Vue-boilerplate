@@ -8,14 +8,14 @@
  */
 
 let baseUrl = '';
-let routerMode = 'hash'; //history
+let routerMode = 'history';
 let imgBaseUrl = 'http://www.baidu.com/';
 
 
 if (process.env.NODE_ENV == 'development') {
 
 }else if(process.env.NODE_ENV == 'production'){
-
+  routerMode = 'hash'; //history
 	// baseUrl = 'http://cangdu.org:8001';
 }
 
