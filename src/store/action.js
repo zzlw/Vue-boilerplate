@@ -3,7 +3,13 @@ import {
 } from '../service/getData'
 import {
 	GET_USERINFO,
-	SAVE_ADDRESS
+  SAVE_ADDRESS,
+
+  SET_LODING,
+  GET_LODING,
+
+  SET_MUSIC,
+  GET_MUSIC,
 } from './mutation-types.js'
 
 export default {
@@ -24,5 +30,30 @@ export default {
 
     let addres = await getUser(state.userInfo.user_id);
 		commit(SAVE_ADDRESS, addres);
-	},
+  },
+  async getLoading({
+		commit,
+    state
+	}) {
+    commit(GET_LODING)
+  },
+  async setLoading({
+		commit,
+    state
+	}) {
+
+    commit(SET_LODING, state)
+  },
+  async getMusic({
+		commit,
+    state
+	}) {
+    commit(GET_MUSIC)
+  },
+  async setMusic({
+		commit,
+    state
+	},info) {
+    commit(SET_MUSIC, info)
+  },
 }

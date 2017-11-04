@@ -1,20 +1,36 @@
 <template>
-  	<div>
-      <p class="text">{{ msg }}</p>
-      <p class="coding">Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+  	<div class="box" :style="{ height: boxHeight() }">
+      <div class="box-head animated pulse"></div>
+      <div class="kuang">
+        <div :class="['kuang-box kuang-right',{ 'active': activeState=='/p2Alice' }]" @click="activeClick( '/p2Alice' )">
+          <div class="kuang-con"></div>
+        </div>
+        <div :class="['kuang-box kuang-left',{ 'active': activeState=='/p5Alice' }]" @click="activeClick( '/p5Alice' )">
+          <div class="kuang-con"></div>
+        </div>
+      </div>
+      <div class="box-buttom animated pulse" @click="routerClick" ></div>
     </div>
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex'
+import $ from "jquery";
 export default {
     data(){
-        return{
-            msg: '集成 Vuex Vue-router http* 等等，让你专注于快速构建业务！',
-        }
+      return {
+        activeState: "",  //true 是 left   false 是 right
+      }
     },
 
 	  mounted(){
-        // 获取当前城市
+      this.getLoading();
+      this.setMusic({
+        show: true,
+        play: true,
+      });
+
+
     },
 
     components:{
@@ -22,12 +38,25 @@ export default {
     },
 
     computed:{
-        //将获取的数据按照A-Z字母开头排序
 
     },
 
     methods:{
-        //点击图标刷新页面
+      ...mapActions([
+          'getLoading',
+          'setMusic',
+      ]),
+      activeClick(path){
+        this.activeState= path;
+      },
+      routerClick(){
+        if(this.activeState){
+          this.$router.push({ path: this.activeState });
+        }
+      },
+      boxHeight(){
+        return $(window).height()+'px';
+      },
 
     },
 }
@@ -36,17 +65,56 @@ export default {
 
 <style lang="scss" scoped>
     @import '../../style/mixin';
-    .text{
-      padding: rem(30);
-      font-size: rem(46);
-      color: #00CCFF;
-      text-align: center;
-    }
-    .coding{
+    .box{
       position: fixed;
-      bottom: 0;
+      height: 100%;
       width: 100%;
-      text-align: center;
-      color: #ccc;
+      padding-top: rem(60);
+      .box-head{
+        width: rem(640);
+        height: rem(360);
+        background: url(../../images/home1.png) no-repeat center / cover;
+        animation-iteration-count: infinite;
+      }
+      .kuang{
+        padding: rem(35) rem(15);
+        display: flex;
+        justify-content: space-around;
+        .kuang-box{
+          width: rem(261);
+          height: rem(359);
+          background: url(../../images/home2.png) no-repeat center / cover;
+          position: relative;
+          .kuang-con{
+            position: absolute;
+            width: rem(246);
+            height: rem(349);
+            border-radius: rem(25);
+            top: rem(5);
+            left: rem(5);
+            background: url(../../images/home1.png) no-repeat center / cover;
+            z-index: -1;
+            overflow: hidden;
+          }
+          &.active{
+            width: rem(262);
+            height: rem(359);
+            background: url(../../images/home-hover.png) no-repeat center / cover;
+          }
+        }
+        .kuang-left{
+
+        }
+        .kuang-right{
+
+        }
+      }
+      .box-buttom{
+        background: url(../../images/home4.png) no-repeat center / cover;
+        width: rem(302);
+        height: rem(86);
+        margin: rem(40) auto 0;
+        animation-iteration-count: infinite;
+      }
     }
 </style>

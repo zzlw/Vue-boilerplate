@@ -1,7 +1,14 @@
+import Vue from 'vue'
 import {
 	INIT_BUYCART,
 	RECORD_USERINFO,
-	GET_USERINFO,
+  GET_USERINFO,
+
+  SET_LODING,
+  GET_LODING,
+
+  SET_MUSIC,
+  GET_MUSIC,
 } from './mutation-types.js'
 
 import {setStore, getStore} from '../config/mUtils'
@@ -24,16 +31,27 @@ export default {
 	},
 	//获取用户信息存入vuex
 	[GET_USERINFO](state, info) {
-		if (state.userInfo && (state.userInfo.username !== info.username)) {
-			return;
-		};
-		if (!state.login) {
-			return
-		}
-		if (!info.message) {
-			state.userInfo = {...info};
-		} else {
-			state.userInfo = null;
-		}
-	}
+    // state.loading = false;
+  },
+  [GET_LODING](state) {
+    setTimeout(function() {
+      state.loading = false;
+    }, 300);
+  },
+  [SET_LODING](state, info) {
+      state.loading = info;
+  },
+  [GET_MUSIC](state) {
+    // setTimeout(function () {
+      state.isMusic= {
+        show: false,
+        play: false,
+      }
+    // }, 300);
+  },
+  [SET_MUSIC](state, info) {
+    console.log(state.isMusic,2)
+    // Vue.set(state, 'isMusic', { ...state.isMusic, ...info })
+    state.isMusic = { ...state.isMusic, ...info }
+  }
 }

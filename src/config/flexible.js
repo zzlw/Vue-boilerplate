@@ -1,5 +1,4 @@
-;
-(function (win, lib) {
+;(function (win, lib) {
   var doc = win.document;
   var docEl = doc.documentElement;
   var metaEl = doc.querySelector('meta[name="viewport"]');
@@ -66,9 +65,7 @@
     metaEl.setAttribute('name', 'viewport');
     metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
     if (docEl.firstElementChild) {
-      docEl
-        .firstElementChild
-        .appendChild(metaEl);
+      docEl.firstElementChild.appendChild(metaEl);
     } else {
       var wrap = doc.createElement('div');
       wrap.appendChild(metaEl);
@@ -77,9 +74,7 @@
   }
 
   function refreshRem() {
-    var width = docEl
-      .getBoundingClientRect()
-      .width;
+    var width = docEl.getBoundingClientRect().width;
     if (width / dpr > 540) {
       width = 540 * dpr;
     }
@@ -88,8 +83,7 @@
     flexible.rem = win.rem = rem;
   }
 
-  win
-    .addEventListener('resize', function () {
+  win.addEventListener('resize', function () {
       clearTimeout(tid);
       tid = setTimeout(refreshRem, 300);
     }, false);
@@ -103,8 +97,7 @@
   if (doc.readyState === 'complete') {
     doc.body.style.fontSize = 12 * dpr + 'px';
   } else {
-    doc
-      .addEventListener('DOMContentLoaded', function (e) {
+    doc.addEventListener('DOMContentLoaded', function (e) {
         doc.body.style.fontSize = 12 * dpr + 'px';
       }, false);
   }
