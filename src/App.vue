@@ -6,7 +6,7 @@
       </div>
     </div>
     <my-music :isMusic="isMusic"></my-music>
-    <!-- <my-loading :isLoading="isLoading"></my-loading> -->
+    <my-loading :isLoading="isLoading"></my-loading>
   </div>
 </template>
 

@@ -186,7 +186,7 @@ export default {
 
 	  mounted(){
       this.getLoading();
-      this.getMusic();
+      // this.getMusic();
 
 
       let _this= this;
