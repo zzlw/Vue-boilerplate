@@ -28,7 +28,7 @@ export default new Router({
       children: [//二级路由。对应App.vue
         {
           path: '',
-          redirect: '/home'
+          redirect: '/loading'
         }, {
           path: '/home',
           component: home
