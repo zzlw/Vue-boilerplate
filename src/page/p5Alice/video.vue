@@ -1,5 +1,5 @@
 <template>
-  	<div ref="videoPlay" class="box" :style="{ height: boxHeight() }" @click="videoPlay" >
+  	<div ref="videoPlay" class="box" :style="{ height: boxHeight() }"  >
       <video :src="zhubo" id="videoPlay" controls class="myVideo" autoplay x5-playsinline="" playsinline webkit-playsinline="" poster="" preload="auto"></video>
 
     </div>
