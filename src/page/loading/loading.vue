@@ -20,12 +20,14 @@ export default {
   },
   mounted(){
     this.getLoading();
-    this.getMusic();
+    this.setMusic({
+      show: false,
+    });
   },
   methods:{
     ...mapActions([
         'getLoading',
-        "getMusic",
+        "setMusic",
     ]),
     boxHeight(){
       return $(window).height()+'px';

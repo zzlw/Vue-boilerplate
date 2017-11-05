@@ -1,9 +1,9 @@
 <template>
-  	<div class="box" :style="{ height: boxHeight() }" >
-      <div class="boxbj"></div>
-      <div class="boxvideo animated pulse">
-      </div>
-      <div class="xing"></div>
+  	<div class="box my-video-xingxing" :style="{ height: boxHeight() }" >
+      <my-video></my-video>
+      <!-- <div class="boxvideo animated pulse">
+      </div> -->
+      <!-- <div class="xing"></div> -->
 
       <div class="box-bottom">
         <div class="box-bottom-box" @click="liwuClick('#icon-liwu2',true)">
@@ -170,6 +170,7 @@ import liwu from 'components/liwu/liwu'
 import moLoding from "components/liwu/moLoding"
 import p5AliceIcon from "../../images/p5Alice-icon.png"
 import mo from "./mo.vue";
+import myVideo from "./video.vue";
 import $ from "jquery";
 export default {
     data(){
@@ -184,9 +185,16 @@ export default {
         }
     },
 
+    created(){
+      this.setMusic({
+        show: false,
+        play: false
+      });
+    },
+
 	  mounted(){
       this.getLoading();
-      this.getMusic();
+
 
 
       let _this= this;
@@ -219,30 +227,23 @@ export default {
       dzfn();
 
 
-
-
-
     },
 
     components:{
       mo,
       liwu,
       moLoding,
+      myVideo,
     },
 
     computed:{
-      // liwuState(){
-      //   return {
-      //     data: this.liwuData.data,
-      //     state: this.liwuData.state,
-      //   }
-      // },
+
     },
 
     methods:{
       ...mapActions([
           'getLoading',
-          "getMusic",
+          "setMusic",
       ]),
       boxHeight(){
         return $(window).height()+'px';
@@ -306,13 +307,14 @@ export default {
         var height = $(window).height();
         var width = $(window).width();
         var x = 100;
-        // var index = $(".xing").children('img').length;
+        // var index = $(".box-bottom").children('img').length;
         var num = Math.floor(Math.random() * 3 + 1);
         var rand = parseInt(Math.random() * (width*1));
-        $(".xing").prepend("<div src="+ p5AliceIcon + " class='dz' ><svg class='icon' aria-hidden='true'><use xlink:href=" + `#${ sjIcons }` + "></use></svg><div/>");
+        let el = $("<div src="+ p5AliceIcon + " class='dz' ><svg class='icon' aria-hidden='true'><use xlink:href=" + `#${ sjIcons }` + "></use></svg><div/>");
+        $(".box-bottom").before( el );
         // $('img:eq('+index+')').attr("src",p5AliceIcon);
-        var imgItem = $(".xing > div:first-of-type");
-        imgItem.stop().animate({
+        // var imgItem = $(".my-video-xingxing > div.dz:last-of-type");
+        el.stop().animate({
             bottom: this.rem(height+100),
             opacity: .3,
             left: this.rem(rand),
@@ -342,14 +344,6 @@ export default {
     .box{
       position: absolute;
       width: 100%;
-      .boxbj{
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        background: url(../../images/p5Alice.png) no-repeat center / cover;
-      }
       .boxvideo{
         position: absolute;
         width: rem(199);
@@ -359,11 +353,11 @@ export default {
         top: rem(260);
         left: rem(210);
       }
-      .xing{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
+      // .xing{
+      //   position: absolute;
+      //   width: 100%;
+      //   height: 100%;
+      // }
       // .boxfixed{
 
         .box-bottom{
@@ -764,49 +758,49 @@ export default {
       }
     }
     .bounce-enter-active{
-      transition: transform .5s;
-      // transform: scale(1,1);
-      transform:translate(0,0) scale(1,1);  //left
+      transition: transform .3s;
+      transform: scale(1,1);
+      // transform:translate(0,0) scale(1,1);  //left
       transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     }
     .bounce-enter{
-      // transform: scale(0,0);
-      transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+      transform: scale(0,0);
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
     }
 
     .bounce-leave-active{
-      transition: transform .5s;
-      // transform: scale(0,0);
-      transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+      transition: transform .3s;
+      transform: scale(0,0);
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
       transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     }
 
     .bounce-leave{
-      // transform: scale(1,1);
-      transform: translate(0,0) scale(1,1); //left
+      transform: scale(1,1);
+      // transform: translate(0,0) scale(1,1); //left
     }
 
     .bounce2-enter-active{
-      transition: transform .5s;
-      // transform: scale(1,1);
-      transform:translate(0,0) scale(1,1);  //left
+      transition: transform .3s;
+      transform: scale(1,1);
+      // transform:translate(0,0) scale(1,1);  //left
       transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     }
     .bounce2-enter{
-      // transform: scale(0,0);
-      transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+      transform: scale(0,0);
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
     }
 
     .bounce2-leave-active{
-      transition: transform .5s;
-      // transform: scale(0,0);
-      transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+      transition: transform .3s;
+      transform: scale(0,0);
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
       transition-timing-function: cubic-bezier(0.7,0,0.3,1);
     }
 
     .bounce2-leave{
-      // transform: scale(1,1);
-      transform: translate(0,0) scale(1,1); //left
+      transform: scale(1,1);
+      // transform: translate(0,0) scale(1,1); //left
     }
 
 </style>

@@ -1,19 +1,17 @@
 <template>
-  <!-- <div> -->
     <div id="wrapper">
       <div id="scroller">
         <div>
           <router-view/>
-          <my-music :isMusic="isMusic"></my-music>
+          <my-music :isMusic="isMusic" :isClick="isClick"></my-music>
           <my-loading :isLoading="isLoading"></my-loading>
         </div>
       </div>
     </div>
-
-  <!-- </div> -->
 </template>
 
 <script>
+import $ from "jquery";
 import {mapState, mapActions} from 'vuex'
 import myLoading from 'components/loading/loading';
 import myMusic from 'components/my-music/my-music';
@@ -30,8 +28,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.isMusic,3)
-    // eslint-disable-next-line
     let that= this;
     setTimeout(()=>{
       that.$nextTick(function () {
@@ -43,26 +39,21 @@ export default {
     ...mapState({
       'isLoading': 'loading',
       "isMusic": "isMusic",
-    }),
-    ...mapActions([
-        "setMusic",
-    ]),
+    })
   },
   props: {
-    // show: {
-    //   type: Boolean,
-    //   required: true,
-    //   default: false,
-    // },
+
   },
   methods: {
+    ...mapActions([
+      "setMusic",
+    ]),
     initScroll() {
       this.sl = new IScroll('#wrapper', {
         scrollX: false,
         scrollY: true,
         mouseWheel: true,
         momentum: false,
-        // snap: '.dp-item',
         probeType: 3,
       });
       this.sl.on('scroll', function scroll() {
@@ -72,6 +63,14 @@ export default {
         // console.log(this);
       });
     },
+    isClick(){
+
+      this.setMusic({
+        play: !this.isMusic.play,
+      })
+
+      console.log(this.isMusic.play,23423)
+    }
   },
 }
 </script>
@@ -114,4 +113,48 @@ div.dz{
   // bottom: rem(50);
   // right: rem(50);
 }
+
+.my-music{
+  position: absolute;
+  top: rem(50);
+  right: rem(50);
+  overflow: hidden;
+  width: rem(80);
+  height: rem(80);
+  border-radius: 50%;
+  background: #ff4961;
+  opacity: .7;
+  .my-box{
+    margin-top: rem(17);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: rem(50);
+  }
+  &.play{
+    animation: my-music 2s infinite linear;
+    @keyframes my-music
+    {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+    }
+  }
+}
+
+  .isMusic-enter-active{
+    transition: opacity .3s;
+    opacity: 1;
+  }
+  .isMusic-enter{
+     opacity: 0;
+  }
+
+  .isMusic-leave-active{
+    transition: opacity .3s;
+    opacity: 0;
+  }
+
+  .isMusic-leave{
+    opacity: 1;
+  }
 </style>

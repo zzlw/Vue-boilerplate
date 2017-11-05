@@ -29,6 +29,7 @@ export default {
       this.getLoading();
       this.setMusic({
         show: true,
+        play: true,
       });
     },
 

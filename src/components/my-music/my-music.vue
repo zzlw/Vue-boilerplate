@@ -1,110 +1,48 @@
 <template>
   <transition name="isMusic">
-    <div class="my-music play" @click="isClick()" v-show="isMusic.show">
+    <div class="my-music play" @click="isClick" v-show="isMusic.show">
       <div class="my-box">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-music-copy"></use>
         </svg>
       </div>
-      <!-- <audio id="my-music-audio" autoplay preload loop> -->
-        <!-- <source :src="lyyzz" type="audio/mp3" />
-      </audio> -->
     </div>
   </transition>
 </template>
 
 <script>
 import $ from "jquery";
-import lyyzz from "../../assets/lyyzz.mp3";
 import {mapState, mapActions} from 'vuex'
 export default {
-  props:["isMusic"],
+  props:["isMusic","isClick"],
   data () {
     return {
-      msg: '加载中...',
-      lyyzz,
-      state: true,
-      statePlay: false,
-      audio: null,
       play: true,
     }
   },
+  beforeUpdate: function () {
+    this.isPlay();
+  },
   components:{
-    // moLoding,
+
   },
   mounted(){
-    // if( this.state ){
-      this.music();
-    // }
-
-    // if( this.statePlay ){
-    //   if( this.isMusic.play){
-    //     this.audio.play();
-    //   }else{
-    //     this.audio.pause();
-    //   }
-    // }
-
-
-    // var audio = $("#my-music-audio")[0];
-    // console.log(that.isMusic,342342)
-    // if( !this.state ){
-    //   audio.onloadedmetadata=function() {
-    //     that.state= true;
-
-    //     if(that.isMusic.play){
-    //       audio.play();
-    //     }else{
-    //       audio.pause();
-    //     }
-
-    //   }
-    // }else{
-    //   if(that.isMusic.play){
-
-    //     audio.play();
-    //   }else{
-    //     audio.pause();
-    //   }
-    // }
-
-
-
 
   },
   methods:{
-    isClick(){
-      this.play= !this.play;
-      if( this.statePlay ){
-        if( this.play){
-          this.audio.play();
+    isPlay(){
+      let el= $("#my-music-audio")[0];
+      if( el ){
+        if( this.isMusic.play){
+          console.log(this.isMusic.play,2)
+          $("#my-music-audio")[0].play();
           $(".my-music").addClass("play");
         }else{
-          this.audio.pause();
+          console.log(this.isMusic.play,3)
+          $("#my-music-audio")[0].pause();
           $(".my-music").removeClass("play");
         }
       }
-    },
-    music(){
-      this.state= false;
-      let that= this;
-      var audio;
-      function loadAudio(src, callback) {
-          audio = new Audio(src);
-          audio.onloadedmetadata = callback;
-          audio.src = src;
-      }
-
-      var audioUrl = this.lyyzz;//音频路径
-      //调用方法
-      loadAudio(audioUrl,function(){
-          // $('#music').attr("src",audioUrl);
-          // alert("加载完成");
-          audio.play();
-          that.audio= audio;
-
-          that.statePlay= true;
-      });
     }
   }
 }
