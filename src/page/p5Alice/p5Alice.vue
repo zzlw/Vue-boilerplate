@@ -186,7 +186,7 @@ export default {
 
 	  mounted(){
       this.getLoading();
-      // this.getMusic();
+      this.getMusic();
 
 
       let _this= this;
@@ -340,6 +340,8 @@ export default {
 <style lang="scss" scoped>
     @import '../../style/mixin';
     .box{
+      position: absolute;
+      width: 100%;
       .boxbj{
         position: absolute;
         height: 100%;

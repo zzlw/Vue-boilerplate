@@ -50,7 +50,7 @@ export default {
     // }, 300);
   },
   [SET_MUSIC](state, info) {
-    console.log(state.isMusic,2)
+    // console.log(state.isMusic,2)
     // Vue.set(state, 'isMusic', { ...state.isMusic, ...info })
     state.isMusic = { ...state.isMusic, ...info }
   }

@@ -1,17 +1,20 @@
 <template>
-  <div>
+  <!-- <div> -->
     <div id="wrapper">
       <div id="scroller">
-        <router-view/>
+        <div>
+          <router-view/>
+          <my-music :isMusic="isMusic"></my-music>
+          <my-loading :isLoading="isLoading"></my-loading>
+        </div>
       </div>
     </div>
-    <my-music :isMusic="isMusic"></my-music>
-    <my-loading :isLoading="isLoading"></my-loading>
-  </div>
+
+  <!-- </div> -->
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapState, mapActions} from 'vuex'
 import myLoading from 'components/loading/loading';
 import myMusic from 'components/my-music/my-music';
 import IScroll from 'iscroll/build/iscroll-probe';
@@ -41,6 +44,9 @@ export default {
       'isLoading': 'loading',
       "isMusic": "isMusic",
     }),
+    ...mapActions([
+        "setMusic",
+    ]),
   },
   props: {
     // show: {

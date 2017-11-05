@@ -25,6 +25,9 @@ export default {
 
 	  mounted(){
       this.getLoading();
+      this.setMusic({
+        show: true,
+      });
     },
 
     components:{
@@ -38,6 +41,7 @@ export default {
     methods:{
       ...mapActions([
           'getLoading',
+          "setMusic",
       ]),
       boxHeight(){
         return $(window).height()+'px';
@@ -89,8 +93,12 @@ export default {
           background: url(../../images/p2Alice-button.png) no-repeat center / cover;
           width: rem(312);
           height: rem(89);
-          margin: rem(5) auto 0;
+          // margin: rem(5) auto 0;
           animation-iteration-count: infinite;
+          position:absolute;
+          left: 50%;
+          margin-left: rem(-156);
+          bottom: rem(70);
         }
       }
     }

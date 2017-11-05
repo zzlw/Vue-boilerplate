@@ -10,6 +10,9 @@
         </div>
       </div>
       <div class="box-buttom animated pulse" @click="routerClick" ></div>
+      <transition name="ta">
+        <div class="tabox" v-if="taState"> 你还没有选择你的 Ta 噢！ </div>
+      </transition>
     </div>
 </template>
 
@@ -20,6 +23,7 @@ export default {
     data(){
       return {
         activeState: "",  //true 是 left   false 是 right
+        taState: false,
       }
     },
 
@@ -27,7 +31,6 @@ export default {
       this.getLoading();
       this.setMusic({
         show: true,
-        play: true,
       });
 
 
@@ -50,8 +53,14 @@ export default {
         this.activeState= path;
       },
       routerClick(){
+        let that= this;
         if(this.activeState){
           this.$router.push({ path: this.activeState });
+        }else{
+          this.taState= true;
+          setTimeout(function() {
+            that.taState= false;
+          }, 2000);
         }
       },
       boxHeight(){
@@ -67,10 +76,9 @@ export default {
     @import '../../style/mixin';
     .box{
       position: fixed;
-      height: 100%;
       width: 100%;
-      padding-top: rem(60);
       .box-head{
+        margin-top: rem(60);
         width: rem(640);
         height: rem(360);
         background: url(../../images/home1.png) no-repeat center / cover;
@@ -113,8 +121,51 @@ export default {
         background: url(../../images/home4.png) no-repeat center / cover;
         width: rem(302);
         height: rem(86);
-        margin: rem(40) auto 0;
         animation-iteration-count: infinite;
+        position:absolute;
+        left: 50%;
+        margin-left: rem(-151);
+        bottom: rem(70);
       }
+      .tabox{
+        padding: rem(50) rem(30);
+        position:absolute;
+        top:50%;
+        left:50%;
+        border-radius: 5px;
+        transform:translate(-50%,-50%);
+        background: rgba(253,80,97,1);
+        font-size: rem(30);
+        color: #fff;
+        line-height: 1.5;
+        transition: all .5s;
+      }
+    }
+
+    .ta-enter-active{
+
+      // transform: scale(1,1);
+      opacity: 1;
+      // transform:translate(0,0) scale(1,1);  //left
+      transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+    }
+    .ta-enter{
+      // transform: scale(0,0);
+      opacity: 0;
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+    }
+
+    .ta-leave-active{
+      // transition: transform .5s;
+      // transform: scale(0,0);
+      opacity: 0;
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+      transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+    }
+
+    .ta-leave{
+      // transform: scale(1,1);
+      opacity: 1;
+      // transform: translate(0,0) scale(1,1); //left
     }
 </style>

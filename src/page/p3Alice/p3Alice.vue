@@ -27,6 +27,9 @@ export default {
 
 	  mounted(){
       this.getLoading();
+      this.setMusic({
+        show: true,
+      });
     },
 
     components:{
@@ -39,7 +42,8 @@ export default {
 
     methods:{
       ...mapActions([
-          'getLoading'
+          'getLoading',
+          "setMusic",
       ]),
       boxHeight(){
         return $(window).height()+'px';
