@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import $ from "jquery";
 import {
-	INIT_BUYCART,
-	RECORD_USERINFO,
-  GET_USERINFO,
-
   SET_LODING,
   GET_LODING,
 
   SET_MUSIC,
   GET_MUSIC,
+
+  SET_LIWU,
+
+  GET_USER_IMG
 } from './mutation-types.js'
 
 import {setStore, getStore} from '../config/mUtils'
@@ -32,5 +32,11 @@ export default {
   },
   [SET_MUSIC](state, info) {
     state.isMusic = { ...state.isMusic, ...info }
+  },
+  [SET_LIWU](state, info) {
+    state.liwuVuex = { ...state.liwuVuex, ...info }
+  },
+  [GET_USER_IMG](state, info) {
+    state.userImg = { ...state.userImg, ...info }
   }
 }

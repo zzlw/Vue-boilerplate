@@ -1,20 +1,21 @@
 <template>
-  	<div class="box my-video-xingxing" :style="{ height: boxHeight() }" >
+  	<div class="box my-video-xingxing" id="danmu" :style="{ height: boxHeight() }" >
       <my-video></my-video>
       <!-- <div class="boxvideo animated pulse">
       </div> -->
       <!-- <div class="xing"></div> -->
+      <!-- <div id="danmu" style="position: relative; width: 100%; height: 100%; background-color: rgba(0,0,0,0.2)"></div> -->
 
       <div class="box-bottom">
-        <div class="box-bottom-box" @click="liwuClick('#icon-liwu2',true)">
+        <div class="box-bottom-box" @click="liwuClick('#icon-liwu2',true,8,11,'qiaokeli')">
           <div class="box-bottom-box-top one">
             <svg class="icon" aria-hidden="true">
-                <use xlink:href="#icon-liwu"></use>
+                <use xlink:href="#icon-qiaokeli"></use>
             </svg>
           </div>
           <div class="box-bottom-box-bottom">巧克力</div>
         </div>
-        <div class="box-bottom-box" @click="liwuClick('#icon-hongbao-copy',true)">
+        <div class="box-bottom-box" @click="liwuClick('#icon-hongbao-copy',true,0,4,'cunkuan')">
           <div class="box-bottom-box-top tow">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-hongbao"></use>
@@ -22,7 +23,7 @@
           </div>
           <div class="box-bottom-box-bottom">50万存款</div>
         </div>
-        <div class="box-bottom-box" @click="liwuClick('#icon-meiguihua1',true)">
+        <div class="box-bottom-box" @click="liwuClick('#icon-meiguihua1',true,4,8,'meigui')">
           <div class="box-bottom-box-top three">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-meiguihua"></use>
@@ -36,7 +37,6 @@
           <div class="area"></div>
           <div class="bbrco good" @click="dz">
             <mo />
-            <i class="num">0</i>
           </div>
           <div class="bbrco-text">Love</div>
         </div>
@@ -50,28 +50,28 @@
         <div class="box-leftBox-bottom">主播有礼</div>
       </div>
       <div class="item1">
-        <div class="item1-box" @click="liwuClick('#icon-caomei1',true)">
+        <div class="item1-box" >
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-caomei1"></use>
+            <use xlink:href="#icon-meiguihua1"></use>
           </svg>
         </div>
-        <div class="item1-text">草莓+1</div>
+        <div class="item1-text">{{ `玫瑰 = ${liwuVuex.meigui}` }}</div>
       </div>
       <div class="item1 a1" :style="{ top: this.rem(190),left: this.rem(340) }">
-        <div class="item1-box" @click="liwuClick('#icon-feiji',true)">
+        <div class="item1-box" >
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-feiji"></use>
+            <use xlink:href="#icon-qiaokeli-copy"></use>
           </svg>
         </div>
-        <div class="item1-text">飞机+1</div>
+        <div class="item1-text">{{ `巧克力 = ${liwuVuex.qiaokeli}` }}</div>
       </div>
       <div class="item1 a2" :style="{ top: this.rem(280),left: this.rem(355) }">
-        <div class="item1-box" @click="liwuClick('#icon-dangao',true)">
+        <div class="item1-box" >
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-dangao"></use>
+            <use xlink:href="#icon-hongbao-copy"></use>
           </svg>
         </div>
-        <div class="item1-text">蛋糕+1</div>
+        <div class="item1-text">{{ `存款 = ${liwuVuex.cunkuan}` }}</div>
       </div>
       <div class="item1 a2 name" :style="{ top: this.rem(593),left: this.rem(153) }">
         <div class="item1-box">
@@ -87,16 +87,16 @@
         <div class="box-head-left"></div>
         <div class="box-head-lBox">
           <div class="userBox">
-            <div class="left" @click="liwuClick('#icon-biaoqing_zuichun',true)"></div>
+            <div class="left" ></div>
             <div class="right">
               <div class="top">{{ name }}</div>
-              <div class="bottom"><span id="sj-length" ></span> 人</div>
+              <div class="bottom"><span id="sj-length" >0</span> 人</div>
             </div>
           </div>
         </div>
         <div class="box-head-right">
           <ul class="imgbox">
-            <li class="img" @click="liwuClick('#icon-meinv',true)" v-for="(item, index) in imgDate" :key="index" :style="{ background: `url(${item}) repeat center / cover` }" ></li>
+            <li class="img"  v-for="(item, index) in imgDate" :key="index" :style="{ background: `url(${item}) repeat center / cover` }" ></li>
           </ul>
         </div>
       </div>
@@ -119,17 +119,20 @@
                 <div class="pctb1-button">
                   <a class="pctb1-button-img animated pulse"></a>
                 </div>
+                <div class="gb" @click="popup1">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanbi"></use>
+                  </svg>
+                </div>
               </div>
             </div>
             <div class="popup1-con-icon">
               <div class="popup1-con-icon-img animated pulse"></div>
+
             </div>
+
           </div>
-          <div class="gb" @click="popup1">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-guanbi"></use>
-            </svg>
-          </div>
+
         </div>
       </transition>
       <transition name="bounce2">
@@ -146,21 +149,25 @@
                 <div class="pctb2-button">
                   <a class="pctb2-button-img animated pulse"></a>
                 </div>
+                <div class="gb" @click="popup2">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanbi"></use>
+                  </svg>
+                </div>
               </div>
             </div>
             <div class="popup2-con-icon">
               <div class="popup2-con-icon-img animated pulse"></div>
+
             </div>
-          </div>
-          <div class="gb" @click="popup2">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-guanbi"></use>
-            </svg>
+
           </div>
         </div>
       </transition>
-
-
+      <!-- <danmu :userImg="userImg" ></danmu> -->
+      <transition name="liwuta">
+        <div class="liwutabox" v-if="taState"> 亲，对我温柔点，单身狗30年手速都没你快. </div>
+      </transition>
     </div>
 </template>
 
@@ -169,63 +176,90 @@ import {mapState, mapActions} from 'vuex'
 import liwu from 'components/liwu/liwu'
 import moLoding from "components/liwu/moLoding"
 import p5AliceIcon from "../../images/p5Alice-icon.png"
+import p5AliceIcon2 from "../../images/p5Alice-icon2.png"
 import mo from "./mo.vue";
+// import danmu from "./mo.vue";
 import myVideo from "./video.vue";
 import $ from "jquery";
 export default {
     data(){
-        return {
-          imgDate: [p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon],
-          name: "Alice",
-          number: "12521",
-          popup1State: false,
-          popup2State: false,
-          p5AliceIcon,
-          liwuData: [],
-        }
+      var that = this;
+      return {
+        imgDate: [p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon],
+        name: "Alice",
+        number: "12521",
+        popup1State: false,
+        popup2State: false,
+        p5AliceIcon,
+        liwuData: [],
+        video: null,
+        progressFlag: null,
+        taState: false,
+      }
     },
 
     created(){
       this.setMusic({
         show: false,
-        play: false
+        // play: false
       });
+
+    },
+
+
+
+    beforeUpdate: function () {
+
+    },
+
+    updated(){
+
+
     },
 
 	  mounted(){
-      this.getLoading();
-
 
 
       let _this= this;
+      _this.getLoading();
+
+
       //观看人数波动
       let sjmax= Math.floor(Math.random()*10000000)+100000;
       let sjLength= $("#sj-length").text(sjmax);
-      let time= Math.floor(Math.random()*1000)+100;
+      // let time= Math.floor(Math.random()*1000)+100;
       let fn= ()=>{
         setTimeout(function() {
-          let sj;
-          if(Math.floor(Math.random()*2)){
-            sj= parseInt(sjLength.text())+Math.floor(Math.random()*2000);
-          }else{
-            sj= parseInt(sjLength.text())+Math.floor(Math.random()*-300);
-          }
+          // let sj;
+          // if(Math.floor(Math.random()*2)){
+            let sj= parseInt(sjLength.text())+Math.floor(Math.random()*2000);
+            // console.log(sj)
+          // }else{
+            // sj= parseInt(sjLength.text())+Math.floor(Math.random()*-300);
+          // }
           sjLength.text(`${sj}`);
           fn()
-        }, time);
+        }, 300);
       }
       fn();
 
-      let sjTime= Math.random()*2000
+      // let sjTime= Math.random()*2000
       let dzfn= ()=>{
         setTimeout(function() {
-          sjTime= Math.random()*2000
+          // sjTime= Math.random()*2000
           _this.dz();
           dzfn();
-        }, Math.floor(Math.random()*sjTime));
+        }, 300);
       }
       dzfn();
+      this.video = document.getElementById("videoPlay");   //视频盒子
 
+
+
+
+      //请求弹幕数据
+      this.getUserImg();
+      this.barrager();
 
     },
 
@@ -234,9 +268,18 @@ export default {
       liwu,
       moLoding,
       myVideo,
+      // danmu,
     },
 
     computed:{
+      ...mapState([
+          'liwuVuex',
+          'userImg',
+      ]),
+      // userImg(){
+      //   console.log(this.$store.state,23423)
+      //   return this.$store.state.title;
+      // }
 
     },
 
@@ -244,6 +287,8 @@ export default {
       ...mapActions([
           'getLoading',
           "setMusic",
+          "setLiwu",
+          "getUserImg",
       ]),
       boxHeight(){
         return $(window).height()+'px';
@@ -322,19 +367,125 @@ export default {
             $(this).remove();
         });
       },
-      liwuClick(data,state) {
+      liwuClick(data,state,start= 0,end= this.video.duration,liwuName ) {
+        // this.play(data,state,start,end);
+
+
+
+
         let that = this;
-        // that.liwuData.state= false;
-        // console.log(data,22)
+
+        let video= this.video;
+        let progressFlag= this.progressFlag;
+        if ( video.paused ){
+
+
+            switch (liwuName) {
+
+              case "meigui":
+
+                that.setLiwu({
+                  meigui: that.liwuVuex.meigui+1
+                })
+                break;
+              case "qiaokeli":
+                that.setLiwu({
+                  qiaokeli: that.liwuVuex.qiaokeli+1
+                })
+                break;
+              case "cunkuan":
+                that.setLiwu({
+                  cunkuan: that.liwuVuex.cunkuan+1
+                })
+                break;
+
+              default:
+                break;
+            }
+
+
+            that.enhanceVideoSeek(start,end);
+            that.liwuMin(data,state);
+        }else{
+          that.taState= true;
+          setTimeout(function() {
+            that.taState= false;
+          }, 2000);
+        }
+
+
+
+      },
+      liwuMin(data,state){
+        let that = this;
         let obj = {
           data,
           state,
         };
-        this.liwuData.push(obj);
+        that.liwuData.push(obj);
+      },
+      enhanceVideoSeek(start,end){
+        let that= this;
+        let video= this.video;
+        let progressFlag= this.progressFlag;
 
+
+        video.currentTime= start;
+        video.play();
+
+
+        let _currentTime= setInterval(()=>{
+          if(video.currentTime==start){
+
+            clearInterval(_currentTime);
+
+          }else{
+            video.currentTime= start;
+          }
+        },30)
+
+
+
+
+
+        progressFlag= setInterval(()=>{
+          if(video.currentTime>=end){
+            video.currentTime= 0;
+
+            let _dsq= setInterval(()=>{
+              if(video.currentTime==0){
+
+                video.pause();
+                clearInterval(_dsq);
+                clearInterval(progressFlag);
+
+              }else{
+                video.currentTime= 0;
+              }
+            },30)
+
+          }
+        },30)
+      },
+      barrager(){
+        let that= this;
+
+        // console.log(this.userImg,2342324)
+        console.log( that.userImg,234234242423 );
+        console.log( that.userImg.data,234234242423 );
+        // setInterval(()=>{
+
+
+          $('#danmu').barrager({img:p5AliceIcon2,info:"看着不错。。。。",title:"年轻人"});
+
+        // },2000)
+
+        // that.userImg.data.map(( item )=>{
+        //   $('#danmu').barrager({img:p5AliceIcon2,info:"看着不错。。。。",title:"年轻人"});
+        // })
 
       }
-    },
+    }
 }
 
 </script>
@@ -353,84 +504,18 @@ export default {
         top: rem(260);
         left: rem(210);
       }
-      // .xing{
-      //   position: absolute;
-      //   width: 100%;
-      //   height: 100%;
-      // }
-      // .boxfixed{
-
-        .box-bottom{
-          position: absolute;
-          width: rem(415);
-          height: rem(149);
-          bottom: rem(40);
-          left: rem(60);
-          display: flex;
-          justify-content: space-between;
-          .box-bottom-box{
-            width: rem(120);
-            height: rem(149);
-            .box-bottom-box-top{
-              width: rem(110);
-              height: rem(110);
-              border-radius: 50%;
-              background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
-              margin: 0 auto;
-              text-align: center;
-              font-size: rem(80);
-              line-height: 1.3;
-            }
-            .box-bottom-box-bottom{
-              width: rem(120);
-              height: rem(28);
-              border-radius: rem(15);
-              background: #fff;
-              margin-top: rem(10);
-              font-size: rem(18);
-              color: #3d3c38;
-              text-align: center;
-              line-height: rem(28);
-            }
-          }
-        }
-        .box-bottomRight{
-          position: absolute;
-          width: rem(80);
-          height: rem(128);
-          bottom: rem(50);
-          right: rem(50);
-          .bbrc{
-            width: rem(80);
-            .bbrco{
-              height: rem(80);
-              border-radius: 50%;
-              background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
-              margin: 0 auto;
-              text-align: center;
-              line-height: 1.5;
-              font-size: rem(20);
-
-              // i{
-              //   font-style: normal;
-              // }
-            }
-            .bbrco-text{
-              font-size: rem(18);
-              color: #ea3372;
-              text-align: center;
-              line-height: rem(28);
-            }
-          }
-        }
-        .box-left{
-          position: absolute;
+      .box-bottom{
+        position: absolute;
+        width: rem(415);
+        height: rem(149);
+        bottom: rem(40);
+        left: rem(60);
+        display: flex;
+        justify-content: space-between;
+        .box-bottom-box{
           width: rem(120);
           height: rem(149);
-          top: rem(340);
-          left: rem(24);
-          animation-iteration-count: infinite;
-          .box-leftBox-top{
+          .box-bottom-box-top{
             width: rem(110);
             height: rem(110);
             border-radius: 50%;
@@ -440,67 +525,125 @@ export default {
             font-size: rem(80);
             line-height: 1.3;
           }
-          .box-leftBox-bottom{
+          .box-bottom-box-bottom{
             width: rem(120);
-            height: rem(36);
+            height: rem(28);
             border-radius: rem(15);
             background: #fff;
             margin-top: rem(10);
             font-size: rem(18);
             color: #3d3c38;
             text-align: center;
-            line-height: rem(36);
-            position: absolute;
-            bottom: rem(22);
+            line-height: rem(28);
           }
         }
-        .item1{
-          position: absolute;
-          overflow: hidden;
-          height: rem(96);
-          top: rem(200);
-          left: rem(55);
-          .item1-box{
-            float: left;
-            width: rem(60);
-            height: rem(60);
+      }
+      .box-bottomRight{
+        position: absolute;
+        width: rem(80);
+        height: rem(128);
+        bottom: rem(50);
+        right: rem(50);
+        .bbrc{
+          width: rem(80);
+          .bbrco{
+            height: rem(80);
             border-radius: 50%;
-            background: #fff;
+            background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
+            margin: 0 auto;
             text-align: center;
-            font-size: rem(55);
-            line-height: 1;
+            line-height: 1.5;
+            font-size: rem(20);
+
+            // i{
+            //   font-style: normal;
+            // }
+          }
+          .bbrco-text{
+            font-size: rem(18);
+            color: #ea3372;
+            text-align: center;
+            line-height: rem(28);
+          }
+        }
+      }
+      .box-left{
+        position: absolute;
+        width: rem(120);
+        height: rem(149);
+        top: rem(340);
+        left: rem(24);
+        animation-iteration-count: infinite;
+        .box-leftBox-top{
+          width: rem(110);
+          height: rem(110);
+          border-radius: 50%;
+          background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
+          margin: 0 auto;
+          text-align: center;
+          font-size: rem(80);
+          line-height: 1.3;
+        }
+        .box-leftBox-bottom{
+          width: rem(120);
+          height: rem(36);
+          border-radius: rem(15);
+          background: #fff;
+          margin-top: rem(10);
+          font-size: rem(18);
+          color: #3d3c38;
+          text-align: center;
+          line-height: rem(36);
+          position: absolute;
+          bottom: rem(22);
+        }
+      }
+      .item1{
+        position: absolute;
+        overflow: hidden;
+        height: rem(96);
+        top: rem(200);
+        left: rem(55);
+        .item1-box{
+          float: left;
+          width: rem(60);
+          height: rem(60);
+          border-radius: 50%;
+          background: #fff;
+          text-align: center;
+          font-size: rem(55);
+          line-height: 1;
+        }
+        .item1-text{
+          float: left;
+          border-radius: rem(15);
+          background: #fff;
+          font-size: rem(18);
+          color: #3d3c38;
+          line-height: rem(36);
+          padding: 0 rem(16);
+          margin: rem(10) 0 0 rem(10);
+        }
+        &.name{
+          .item1-title{
+            float: left;
+            padding: 0 rem(16);
+            font-size: rem(18);
+            color: #fff;
+            line-height: rem(28);
+            margin: rem(0) 0 0 0;
+            color: #f97596;
           }
           .item1-text{
-            float: left;
-            border-radius: rem(15);
-            background: #fff;
-            font-size: rem(18);
-            color: #3d3c38;
-            line-height: rem(36);
-            padding: 0 rem(16);
-            margin: rem(10) 0 0 rem(10);
-          }
-          &.name{
-            .item1-title{
-              float: left;
-              padding: 0 rem(16);
-              font-size: rem(18);
-              color: #fff;
-              line-height: rem(28);
-              margin: rem(0) 0 0 0;
-              color: #f97596;
-            }
-            .item1-text{
-              margin: rem(0) 0 0 rem(10);
-              line-height: rem(28);
-              min-width: rem(240);
-              max-width: rem(380);
-              max-height: rem(28);
-              overflow: hidden;
-            }
+            margin: rem(0) 0 0 rem(10);
+            line-height: rem(28);
+            min-width: rem(240);
+            max-width: rem(380);
+            max-height: rem(28);
+            overflow: hidden;
           }
         }
-      // }
+      }
       .boxtop{
         position: absolute;
         width: 100%;
@@ -644,6 +787,14 @@ export default {
                   animation-iteration-count: infinite;
                 }
               }
+              .gb{
+                position: relative;
+                top: rem(520);
+                transform: translateY(-50%);
+                margin: auto;
+                font-size: rem(60);
+                text-align: center;
+              }
             }
           }
           .popup1-con-icon{
@@ -658,12 +809,7 @@ export default {
             }
           }
         }
-        .gb{
-          position: absolute;
-          right: rem(30);
-          top: rem(30);
-          font-size: rem(60);
-        }
+
       }
       .popup2{
         position: absolute;
@@ -731,6 +877,14 @@ export default {
                   animation-iteration-count: infinite;
                 }
               }
+              .gb{
+                position: relative;
+                top: rem(520);
+                transform: translateY(-50%);
+                margin: auto;
+                font-size: rem(60);
+                text-align: center;
+              }
             }
           }
           .popup2-con-icon{
@@ -744,17 +898,26 @@ export default {
               animation-iteration-count: infinite;
             }
           }
+
         }
-        .gb{
-          position: absolute;
-          right: rem(30);
-          top: rem(30);
-          font-size: rem(60);
-        }
+
       }
       .liwu{
         font-size: rem(350);
         text-align: center;
+      }
+      .liwutabox{
+        padding: rem(50) rem(30);
+        position:absolute;
+        top:50%;
+        left:50%;
+        border-radius: 5px;
+        transform:translate(-50%,-50%);
+        background: rgba(253,80,97,1);
+        font-size: rem(30);
+        color: #fff;
+        line-height: 1.5;
+        transition: all .5s;
       }
     }
     .bounce-enter-active{
@@ -800,6 +963,34 @@ export default {
 
     .bounce2-leave{
       transform: scale(1,1);
+      // transform: translate(0,0) scale(1,1); //left
+    }
+
+
+    .liwuta-enter-active{
+
+      // transform: scale(1,1);
+      opacity: 1;
+      // transform:translate(0,0) scale(1,1);  //left
+      transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+    }
+    .liwuta-enter{
+      // transform: scale(0,0);
+      opacity: 0;
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+    }
+
+    .liwuta-leave-active{
+      // transition: transform .5s;
+      // transform: scale(0,0);
+      opacity: 0;
+      // transform: translate(rem(-250),rem(-120)) scale(0,0); //left
+      transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+    }
+
+    .liwuta-leave{
+      // transform: scale(1,1);
+      opacity: 1;
       // transform: translate(0,0) scale(1,1); //left
     }
 

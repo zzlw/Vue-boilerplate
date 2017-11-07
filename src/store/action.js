@@ -7,6 +7,10 @@ import {
 
   SET_MUSIC,
   GET_MUSIC,
+
+  SET_LIWU,
+
+  GET_USER_IMG,
 } from './mutation-types.js'
 
 export default {
@@ -33,7 +37,23 @@ export default {
   async setMusic({
 		commit,
     state
-	},info) {
+	}, info) {
     commit(SET_MUSIC, info)
+  },
+  async setLiwu({
+		commit,
+    state
+	},info) {
+
+    commit(SET_LIWU, info)
+  },
+  async getUserImg({
+		commit,
+    state
+	}, info) {
+
+    let res = await getUser();
+
+    commit(GET_USER_IMG, res)
   },
 }

@@ -3,10 +3,10 @@
       <div class="box-head animated pulse"></div>
       <div class="kuang">
         <div :class="['kuang-box kuang-right',{ 'active': activeState=='/p2Alice' }]" @click="activeClick( '/p2Alice' )">
-          <div class="kuang-con"></div>
+          <div class="kuang-con eric"></div>
         </div>
         <div :class="['kuang-box kuang-left',{ 'active': activeState=='/p5Alice' }]" @click="activeClick( '/p5Alice' )">
-          <div class="kuang-con"></div>
+          <div class="kuang-con alice"></div>
         </div>
       </div>
       <div class="box-buttom animated pulse" @click="routerClick" ></div>
@@ -99,9 +99,14 @@ export default {
             border-radius: rem(25);
             top: rem(5);
             left: rem(5);
-            background: url(../../images/home1.png) no-repeat center / cover;
             z-index: -1;
             overflow: hidden;
+            &.eric{
+              background: url(../../assets/eric.jpeg) no-repeat center / cover;
+            }
+            &.alice{
+              background: url(../../assets/alice.jpeg) no-repeat center / cover;
+            }
           }
           &.active{
             width: rem(262);
@@ -110,7 +115,7 @@ export default {
           }
         }
         .kuang-left{
-
+          // background: url(../../images/home1.png) no-repeat center / cover;
         }
         .kuang-right{
 
