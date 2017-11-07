@@ -164,7 +164,6 @@
           </div>
         </div>
       </transition>
-      <!-- <danmu :userImg="userImg" ></danmu> -->
       <transition name="liwuta">
         <div class="liwutabox" v-if="taState"> 亲，对我温柔点，单身狗30年手速都没你快. </div>
       </transition>
@@ -178,7 +177,6 @@ import moLoding from "components/liwu/moLoding"
 import p5AliceIcon from "../../images/p5Alice-icon.png"
 import p5AliceIcon2 from "../../images/p5Alice-icon2.png"
 import mo from "./mo.vue";
-// import danmu from "./mo.vue";
 import myVideo from "./video.vue";
 import $ from "jquery";
 export default {
@@ -268,7 +266,6 @@ export default {
       liwu,
       moLoding,
       myVideo,
-      // danmu,
     },
 
     computed:{
@@ -276,10 +273,6 @@ export default {
           'liwuVuex',
           'userImg',
       ]),
-      // userImg(){
-      //   console.log(this.$store.state,23423)
-      //   return this.$store.state.title;
-      // }
 
     },
 
@@ -469,21 +462,20 @@ export default {
       },
       barrager(){
         let that= this;
+        let dsq= setInterval(()=>{
+          if(that.userImg.data){
+            console.log( that.userImg,234234242423 );
+            clearInterval(dsq);
 
-        // console.log(this.userImg,2342324)
-        console.log( that.userImg,234234242423 );
-        console.log( that.userImg.data,234234242423 );
-        // setInterval(()=>{
 
+            setInterval(()=>{
+              var num = Math.floor(Math.random() * that.userImg.data.length);
 
-          $('#danmu').barrager({img:p5AliceIcon2,info:"看着不错。。。。",title:"年轻人"});
+              $('#danmu').barrager({img:p5AliceIcon2,info:that.userImg.data[num].title,title:"年轻人"});
+            },3000)
 
-        // },2000)
-
-        // that.userImg.data.map(( item )=>{
-        //   $('#danmu').barrager({img:p5AliceIcon2,info:"看着不错。。。。",title:"年轻人"});
-        // })
-
+          }
+        },200)
       }
     }
 }
