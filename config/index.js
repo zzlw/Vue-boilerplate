@@ -32,11 +32,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/node': {
-        target: 'https://cnodejs.org/api/v1',
+      '/api': {
+        target: 'http://dev.mp.duduapp.net',
         changeOrigin: true,
         pathRewrite: {
-          '^/node': ''
+          '^/api': ''
         }
       }
     },

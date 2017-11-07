@@ -7,7 +7,7 @@
  *
  */
 
-let baseUrl = '/node';
+let baseUrl = '/api';
 let routerMode = 'history';
 let imgBaseUrl = 'http://www.baidu.com/';
 

@@ -2,10 +2,10 @@
   	<div class="box" :style="{ height: boxHeight() }">
       <div class="box-head animated pulse"></div>
       <div class="kuang">
-        <div :class="['kuang-box kuang-right',{ 'active': activeState=='/p2Alice' }]" @click="activeClick( '/p2Alice' )">
+        <div :class="['kuang-box kuang-right',{ 'active': activeState=='/p2Eric' }]" @click="activeClick( '/p2Eric' )">
           <div class="kuang-con eric"></div>
         </div>
-        <div :class="['kuang-box kuang-left',{ 'active': activeState=='/p5Alice' }]" @click="activeClick( '/p5Alice' )">
+        <div :class="['kuang-box kuang-left',{ 'active': activeState=='/p2Alice' }]" @click="activeClick( '/p2Alice' )">
           <div class="kuang-con alice"></div>
         </div>
       </div>

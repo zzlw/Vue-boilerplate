@@ -13,10 +13,18 @@ Router.prototype.goBack = function () {
 Vue.use(Router)
 
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
+
 const p2Alice = r => require.ensure([], () => r(require('../page/p2Alice/p2Alice')), 'p2Alice')
 const p3Alice = r => require.ensure([], () => r(require('../page/p3Alice/p3Alice')), 'p3Alice')
 const p4Alice = r => require.ensure([], () => r(require('../page/p4Alice/p4Alice')), 'p4Alice')
 const p5Alice = r => require.ensure([], () => r(require('../page/p5Alice/p5Alice')), 'p5Alice')
+
+const p2Eric = r => require.ensure([], () => r(require('../page/p2Eric/p2Eric')), 'p2Eric')
+const p3Eric = r => require.ensure([], () => r(require('../page/p3Eric/p3Eric')), 'p3Eric')
+const p4Eric = r => require.ensure([], () => r(require('../page/p4Eric/p4Eric')), 'p4Eric')
+const p5Eric = r => require.ensure([], () => r(require('../page/p5Eric/p5Eric')), 'p5Eric')
+
+
 const loading = r => require.ensure([], () => r(require('../page/loading/loading')), 'loading')
 
 
@@ -44,6 +52,18 @@ export default new Router({
         }, {
           path: '/p5Alice',
           component: p5Alice
+        }, {
+          path: '/p2Eric',
+          component: p2Eric
+        }, {
+          path: '/p3Eric',
+          component: p3Eric
+        }, {
+          path: '/p4Eric',
+          component: p4Eric
+        }, {
+          path: '/p5Eric',
+          component: p5Eric
         }, {
           path: '/loading',
           component: loading

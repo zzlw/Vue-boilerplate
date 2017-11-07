@@ -17,6 +17,9 @@ const state = {
     qiaokeli: 0,
     cunkuan: 0,
     meigui: 0,
+    douwokaixin: 0,
+    qinwoyixia: 0,
+    meili: 0,
   },
   userImg: {
     img: p5AliceIcon2,
