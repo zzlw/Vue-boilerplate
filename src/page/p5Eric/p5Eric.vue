@@ -203,6 +203,7 @@ export default {
         video: null,
         progressFlag: null,
         taState: false,
+        maskPlay: true,
       }
     },
 
@@ -232,29 +233,8 @@ export default {
       _this.getLoading();
 
 
-      // //观看人数波动
-      // let sjmax= Math.floor(Math.random()*10000000)+100000;
-      // let sjnanLength= $("#sjnan-length").text(sjmax);
-      // // let time= Math.floor(Math.random()*1000)+100;
-      // let fn= ()=>{
-      //   setTimeout(function() {
-      //     // let sj;
-      //     // if(Math.floor(Math.random()*2)){
-      //       let sj= parseInt(sjLength.text())+Math.floor(Math.random()*2000);
-      //       // console.log(sj)
-      //     // }else{
-      //       // sj= parseInt(sjLength.text())+Math.floor(Math.random()*-300);
-      //     // }
-      //     sjLength.text(`${sj}`);
-      //     fn()
-      //   }, 300);
-      // }
-      // fn();
-
-      // let sjTime= Math.random()*2000
       let dzfn= ()=>{
         setTimeout(function() {
-          // sjTime= Math.random()*2000
           _this.dz();
           dzfn();
         }, 300);
@@ -267,11 +247,6 @@ export default {
 
       //请求弹幕数据
       this.barrager();
-
-
-
-      // await this.getUserImg();
-      // console.log(this.userImg.data)
 
 
       window.appConfig.weixinImgNan( ( data )=>{
@@ -360,21 +335,12 @@ export default {
         let sjIcons= icons[ Math.floor(Math.random()*icons.length) ];
 
 
-
-        //获取点赞数量
-        // var number = $(".num").text();
-        //点赞数量+1
-        // $(".num").text(Number(number)+1);
         var height = $(window).height();
         var width = $(window).width();
-        var x = 100;
-        // var index = $(".box-bottom").children('img').length;
         var num = Math.floor(Math.random() * 3 + 1);
         var rand = parseInt(Math.random() * (width*1));
         let el = $("<div src="+ p5AliceIcon + " class='dz' ><svg class='icon' aria-hidden='true'><use xlink:href=" + `#${ sjIcons }` + "></use></svg><div/>");
         $(".box-bottom").before( el );
-        // $('img:eq('+index+')').attr("src",p5AliceIcon);
-        // var imgItem = $(".my-video-xingxing > div.dz:last-of-type");
         el.stop().animate({
             bottom: this.rem(height-200),
             opacity: .3,
@@ -384,17 +350,13 @@ export default {
         });
       },
       liwuClick(data,state,start= 0,end= this.video.duration,liwuName ) {
-        // this.play(data,state,start,end);
-
-
-
-
         let that = this;
 
         let video= this.video;
         let progressFlag= this.progressFlag;
-        if ( video.paused ){
 
+        if ( video.paused && that.maskPlay ){
+            that.maskPlay= false;
 
             switch (liwuName) {
 
@@ -455,6 +417,26 @@ export default {
 
             clearInterval(_currentTime);
 
+            progressFlag= setInterval(()=>{
+              if(video.currentTime>=end){
+                video.currentTime= 0;
+
+                let _dsq= setInterval(()=>{
+                  if(video.currentTime==0){
+
+                    video.pause();
+                    clearInterval(_dsq);
+                    clearInterval(progressFlag);
+                    that.maskPlay= true;
+
+                  }else{
+                    video.currentTime= 0;
+                  }
+                },30)
+
+              }
+            },30)
+
           }else{
             video.currentTime= start;
           }
@@ -464,24 +446,7 @@ export default {
 
 
 
-        progressFlag= setInterval(()=>{
-          if(video.currentTime>=end){
-            video.currentTime= 0;
 
-            let _dsq= setInterval(()=>{
-              if(video.currentTime==0){
-
-                video.pause();
-                clearInterval(_dsq);
-                clearInterval(progressFlag);
-
-              }else{
-                video.currentTime= 0;
-              }
-            },30)
-
-          }
-        },30)
       },
       barrager(){
 

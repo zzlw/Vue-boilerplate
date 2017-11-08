@@ -1,6 +1,6 @@
 <template>
   	<div ref="videoPlay" id="videoPlayBox" class="box" :style="{ height: heights }"  >
-      <video :src="src" id="videoPlay" class="myVideo" width="100%" height="100%" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
+      <video :src="src" id="videoPlay" class="myVideo" width="100%" height="100%" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline="" playsinline="" webkit-playsinline="" poster=""  preload="auto"></video>
     </div>
 </template>
 
@@ -33,10 +33,6 @@ export default {
       let that= this;
       $(window).resize(function() {
         that.height= that.boxHeight();
-        // console.log( $("#videoPlayBox").css("transform") );
-        // $("#videoPlayBox").css({
-        //   transform: scale(1.2,1.3);
-        // })
       });
 
     },
