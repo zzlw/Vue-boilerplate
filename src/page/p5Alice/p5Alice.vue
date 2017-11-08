@@ -228,27 +228,27 @@ export default {
       _this.getLoading();
 
 
-      // let dzfn= ()=>{
-      //   setTimeout(function() {
-      //     _this.dz();
-      //     dzfn();
-      //   }, 600);
-      // }
-      // dzfn();
-      // this.video = document.getElementById("videoPlay");   //视频盒子
+      let dzfn= ()=>{
+        setTimeout(function() {
+          _this.dz();
+          dzfn();
+        }, 600);
+      }
+      dzfn();
+      this.video = document.getElementById("videoPlay");   //视频盒子
 
 
 
 
       //请求弹幕数据
-      // this.barrager();
+      this.barrager();
 
-      // window.appConfig.weixinImgNv( ( data )=>{
+      window.appConfig.weixinImgNv( ( data )=>{
 
-      //   _this.imgDate= data.imgs;
-      //   _this.number= data.num;
+        _this.imgDate= data.imgs;
+        _this.number= data.num;
 
-      // } );
+      } );
 
     },
 
