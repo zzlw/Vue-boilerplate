@@ -5,7 +5,7 @@
           <use xlink:href="#icon-liwu"></use>
       </svg>
     </div>
-    <div class="box-leftBox-bottom">主播有礼</div>
+    <div class="box-leftBox-bottom">抢电影票</div>
     <div class="sdfdfdsfsdfsfsd"></div>
   </div>
 </template>
