@@ -279,8 +279,19 @@ export default {
         return $(window).height()+'px';
       },
       popup(){
-        let sj= Math.floor(Math.random()*2)+1;
-        // let sj= 2;
+        let sj;
+
+        let probability = window.appConfig.probability;
+
+
+        var rand = Math.random();
+        if (rand < probability){
+          sj=1;
+        }else {
+          sj=2;
+        }
+
+
         this[`popup${sj}State`]= !this[`popup${sj}State`];
       },
       popup1(){
