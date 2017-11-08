@@ -37,7 +37,7 @@ export default {
           $("#my-music-audio")[0].play();
           $(".my-music").addClass("play");
         }else{
-          console.log(this.isMusic.play,3)
+          // console.log(this.isMusic.play,3)
           $("#my-music-audio")[0].pause();
           $(".my-music").removeClass("play");
         }

@@ -401,6 +401,10 @@ export default {
         let progressFlag= this.progressFlag;
 
 
+        video.currentTime= start;
+        video.play();
+
+
         let _currentTime= setInterval(()=>{
           if(video.currentTime==start){
 

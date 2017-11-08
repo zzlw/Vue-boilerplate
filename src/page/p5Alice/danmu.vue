@@ -35,7 +35,7 @@ export default {
     },
 
 	  mounted(){
-      console.log(this.userImg,2342324)
+      // console.log(this.userImg,2342324)
     },
 
     components:{

@@ -65,7 +65,7 @@ export default {
         play: !this.isMusic.play
       });
 
-      console.log(this.isMusic.play, 23423);
+      // console.log(this.isMusic.play, 23423);
     },
     boxHeight() {
       return $(window).height() + "px";
