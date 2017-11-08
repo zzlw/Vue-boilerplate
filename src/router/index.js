@@ -12,20 +12,36 @@ Router.prototype.goBack = function () {
 
 Vue.use(Router)
 
-const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
+// const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
 
-const p2Alice = r => require.ensure([], () => r(require('../page/p2Alice/p2Alice')), 'p2Alice')
-const p3Alice = r => require.ensure([], () => r(require('../page/p3Alice/p3Alice')), 'p3Alice')
-const p4Alice = r => require.ensure([], () => r(require('../page/p4Alice/p4Alice')), 'p4Alice')
-const p5Alice = r => require.ensure([], () => r(require('../page/p5Alice/p5Alice')), 'p5Alice')
+// const p2Alice = r => require.ensure([], () => r(require('../page/p2Alice/p2Alice')), 'p2Alice')
+// const p3Alice = r => require.ensure([], () => r(require('../page/p3Alice/p3Alice')), 'p3Alice')
+// const p4Alice = r => require.ensure([], () => r(require('../page/p4Alice/p4Alice')), 'p4Alice')
+// const p5Alice = r => require.ensure([], () => r(require('../page/p5Alice/p5Alice')), 'p5Alice')
 
-const p2Eric = r => require.ensure([], () => r(require('../page/p2Eric/p2Eric')), 'p2Eric')
-const p3Eric = r => require.ensure([], () => r(require('../page/p3Eric/p3Eric')), 'p3Eric')
-const p4Eric = r => require.ensure([], () => r(require('../page/p4Eric/p4Eric')), 'p4Eric')
-const p5Eric = r => require.ensure([], () => r(require('../page/p5Eric/p5Eric')), 'p5Eric')
+// const p2Eric = r => require.ensure([], () => r(require('../page/p2Eric/p2Eric')), 'p2Eric')
+// const p3Eric = r => require.ensure([], () => r(require('../page/p3Eric/p3Eric')), 'p3Eric')
+// const p4Eric = r => require.ensure([], () => r(require('../page/p4Eric/p4Eric')), 'p4Eric')
+// const p5Eric = r => require.ensure([], () => r(require('../page/p5Eric/p5Eric')), 'p5Eric')
 
 
-const loading = r => require.ensure([], () => r(require('../page/loading/loading')), 'loading')
+// const loading = r => require.ensure([], () => r(require('../page/loading/loading')), 'loading')
+
+
+import home from '../page/home/home';
+
+import p2Alice from '../page/p2Alice/p2Alice'
+import p3Alice from '../page/p3Alice/p3Alice'
+import p4Alice from '../page/p4Alice/p4Alice'
+import p5Alice from '../page/p5Alice/p5Alice'
+
+import p2Eric from '../page/p2Eric/p2Eric'
+import p3Eric from '../page/p3Eric/p3Eric'
+import p4Eric from '../page/p4Eric/p4Eric'
+import p5Eric from '../page/p5Eric/p5Eric'
+
+
+import loading from '../page/loading/loading'
 
 
 export default new Router({

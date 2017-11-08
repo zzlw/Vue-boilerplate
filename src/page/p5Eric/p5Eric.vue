@@ -41,15 +41,21 @@
           <div class="bbrco-text">Love</div>
         </div>
       </div>
-      <div class="box-left animated pulse" @click="popup">
-        <div class="box-leftBox-top tow">
-          <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-liwu"></use>
-          </svg>
-        </div>
-        <div class="box-leftBox-bottom">主播有礼</div>
-      </div>
-      <div class="item1">
+
+      <mobutton :popup="popup">
+<!--
+        <div slot="box-leftBox-top" class="box-left animated pulse" @click="popup" >
+          <div  class="box-leftBox-top tow">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-liwu"></use>
+            </svg>
+          </div>
+          <div class="box-leftBox-bottom">主播有礼</div>
+
+        </div> -->
+      </mobutton>
+
+      <!-- <div class="item1">
         <div class="item1-box" >
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-zuichun-copy"></use>
@@ -72,7 +78,7 @@
           </svg>
         </div>
         <div class="item1-text">{{ `逗我开心 + ${liwuVuex.douwokaixin}` }}</div>
-      </div>
+      </div> -->
       <!-- <div class="item1 a2 name" :style="{ top: this.rem(593),left: this.rem(153) }">
         <div class="item1-box">
           <svg class="icon" aria-hidden="true">
@@ -177,6 +183,7 @@ import moLoding from "components/liwu/moLoding"
 import p5AliceIcon from "../../images/p5Alice-icon.png"
 import p5AliceIcon2 from "../../images/p5Alice-icon2.png"
 import mo from "./mo.vue";
+import mobutton from "./mobutton.vue";
 import myVideo from "./video.vue";
 import danmu from "./danmu.js";
 import $ from "jquery";
@@ -185,7 +192,7 @@ export default {
       var that = this;
       return {
         imgDate: [p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon],
-        name: "Alice",
+        name: "Eric",
         number: "12521",
         popup1State: false,
         popup2State: false,
@@ -272,6 +279,7 @@ export default {
       liwu,
       moLoding,
       myVideo,
+      mobutton,
     },
 
     computed:{
@@ -558,37 +566,7 @@ export default {
           }
         }
       }
-      .box-left{
-        position: absolute;
-        width: rem(120);
-        height: rem(149);
-        top: rem(340);
-        left: rem(24);
-        animation-iteration-count: infinite;
-        .box-leftBox-top{
-          width: rem(110);
-          height: rem(110);
-          border-radius: 50%;
-          background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
-          margin: 0 auto;
-          text-align: center;
-          font-size: rem(80);
-          line-height: 1.3;
-        }
-        .box-leftBox-bottom{
-          width: rem(120);
-          height: rem(36);
-          border-radius: rem(15);
-          background: #fff;
-          margin-top: rem(10);
-          font-size: rem(18);
-          color: #3d3c38;
-          text-align: center;
-          line-height: rem(36);
-          position: absolute;
-          bottom: rem(22);
-        }
-      }
+
       .item1{
         position: absolute;
         overflow: hidden;

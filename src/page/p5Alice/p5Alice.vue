@@ -7,7 +7,7 @@
       <!-- <div id="danmu" style="position: relative; width: 100%; height: 100%; background-color: rgba(0,0,0,0.2)"></div> -->
 
       <div class="box-bottom">
-        <div class="box-bottom-box" @click="liwuClick('#icon-liwu2',true,8,11,'qiaokeli')">
+        <div class="box-bottom-box" @click="liwuClick('#icon-liwu2',true,11,14,'qiaokeli')">
           <div class="box-bottom-box-top one">
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-qiaokeli"></use>
@@ -41,15 +41,16 @@
           <div class="bbrco-text">Love</div>
         </div>
       </div>
-      <div class="box-left animated pulse" @click="popup">
+      <!-- <div class="box-left animated pulse" @click="popup">
         <div class="box-leftBox-top tow">
           <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-liwu"></use>
           </svg>
         </div>
         <div class="box-leftBox-bottom">主播有礼</div>
-      </div>
-      <div class="item1">
+      </div> -->
+      <mobutton :popup="popup"></mobutton>
+      <!-- <div class="item1">
         <div class="item1-box" >
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-meiguihua1"></use>
@@ -72,7 +73,7 @@
           </svg>
         </div>
         <div class="item1-text">{{ `存款 + ${liwuVuex.cunkuan}` }}</div>
-      </div>
+      </div> -->
       <!-- <div class="item1 a2 name" :style="{ top: this.rem(593),left: this.rem(153) }">
         <div class="item1-box">
           <svg class="icon" aria-hidden="true">
@@ -176,6 +177,7 @@ import liwu from 'components/liwu/liwu'
 import moLoding from "components/liwu/moLoding"
 import p5AliceIcon from "../../images/p5Alice-icon.png"
 import p5AliceIcon2 from "../../images/p5Alice-icon2.png"
+import mobutton from "./mobutton.vue";
 import mo from "./mo.vue";
 import myVideo from "./video.vue";
 import danmu from "./danmu.js";
@@ -273,6 +275,7 @@ export default {
       liwu,
       moLoding,
       myVideo,
+      mobutton,
     },
 
     computed:{
@@ -566,13 +569,14 @@ export default {
     width: rem(120);
     height: rem(149);
     top: rem(340);
-    left: rem(24);
+    right: rem(24);
     animation-iteration-count: infinite;
     .box-leftBox-top {
       width: rem(110);
       height: rem(110);
       border-radius: 50%;
-      background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
+      // background: url(../../images/p5Alice-icon111.png) no-repeat center / cover;
+      background: #f39700;
       margin: 0 auto;
       text-align: center;
       font-size: rem(80);
