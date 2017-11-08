@@ -651,7 +651,7 @@ export default {
               height: rem(75);
               margin-top: rem(7.5);
               margin-left: rem(7);
-              background: url(../../images/p5Alice-icon2.png) no-repeat center / cover;
+              background: url(../../images/Eric.png) no-repeat center / cover;
             }
             .right{
               float: right;
