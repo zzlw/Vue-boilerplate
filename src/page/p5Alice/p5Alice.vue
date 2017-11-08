@@ -250,7 +250,7 @@ export default {
           // sjTime= Math.random()*2000
           _this.dz();
           dzfn();
-        }, 300);
+        }, 600);
       }
       dzfn();
       this.video = document.getElementById("videoPlay");   //视频盒子
@@ -363,10 +363,10 @@ export default {
         // $('img:eq('+index+')').attr("src",p5AliceIcon);
         // var imgItem = $(".my-video-xingxing > div.dz:last-of-type");
         el.stop().animate({
-            bottom: this.rem(height+100),
+            bottom: this.rem(height-200),
             opacity: .3,
-            left: this.rem(rand),
-        },3000,"linear",function(){
+            left: this.rem(rand+260),
+        },1500,"linear",function(){
             $(this).remove();
         });
       },
