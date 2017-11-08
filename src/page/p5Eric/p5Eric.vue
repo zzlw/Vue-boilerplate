@@ -147,7 +147,7 @@
         </div>
       </transition>
       <transition name="bounce2">
-        <div class="popup2" v-show="popup2State">
+        <div class="popup2" v-show="popup0State">
           <div class="popup2-con">
             <div class="popup2-con-text">
               <div class="popup2-con-text-bg">
@@ -200,7 +200,7 @@ export default {
         name: "Eric",
         number: 0,
         popup1State: false,
-        popup2State: false,
+        popup0State: false,
         p5AliceIcon,
         liwuData: [],
         video: null,
@@ -259,6 +259,7 @@ export default {
 
         _this.imgDate= data.imgs;
         _this.number= data.num;
+        _this.sj= window.appConfig.probability;
         var rand;
         setInterval(()=>{
           rand= Math.floor( Math.random()*20 );
@@ -300,16 +301,16 @@ export default {
 
         let sj= this.sj;
 
-        let probability = window.appConfig.probability;
+        // let probability = window.appConfig.probability;
 
-        if( !sj ){
-          var rand = Math.random();
-          if (rand < probability){
-            sj=1;
-          }else {
-            sj=2;
-          }
-        }
+        // if( !sj ){
+        //   var rand = Math.random();
+        //   if (rand < probability){
+        //     sj=1;
+        //   }else {
+        //     sj=2;
+        //   }
+        // }
 
         //1是电影票
         this[`popup${sj}State`]= !this[`popup${sj}State`];
@@ -318,7 +319,7 @@ export default {
         this.popup1State= !this.popup1State;
       },
       popup2(){
-        this.popup2State= !this.popup2State;
+        this.popup0State= !this.popup0State;
       },
       dz(){
         //al icons
