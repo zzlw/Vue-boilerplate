@@ -1,6 +1,6 @@
 <template>
   <transition name="isMusic">
-    <div class="my-music play" @click="isClick" v-show="isMusic.show">
+    <div class="my-music play" @click="isPlay" v-show="isMusic.show">
       <div class="my-box">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-music-copy"></use>
@@ -18,10 +18,11 @@ export default {
   data () {
     return {
       play: true,
+      isMusicPlay: false,
     }
   },
   beforeUpdate: function () {
-    this.isPlay();
+    // this.isPlay();
   },
   components:{
 
@@ -33,7 +34,9 @@ export default {
     isPlay(){
       let el= $("#my-music-audio")[0];
       if( el ){
-        if( this.isMusic.play){
+
+        if( this.isMusicPlay){
+
           $("#my-music-audio")[0].play();
           $(".my-music").addClass("play");
         }else{
@@ -41,6 +44,8 @@ export default {
           $("#my-music-audio")[0].pause();
           $(".my-music").removeClass("play");
         }
+
+        this.isMusicPlay= !this.isMusicPlay
       }
     }
   }
