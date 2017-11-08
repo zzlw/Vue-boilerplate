@@ -67,7 +67,7 @@ export default {
         .kuang{
           width: rem(300);
           height: rem(391);
-          background: url(../../images/Eric-renwu.png) no-repeat center / cover;
+          background: url(../../images/p4Eric.png) no-repeat center / cover;
           margin: rem(70) auto 0;
           animation-iteration-count: infinite;
         }
