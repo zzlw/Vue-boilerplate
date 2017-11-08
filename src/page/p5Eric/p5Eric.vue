@@ -1,11 +1,70 @@
 <template>
-  	<div class="box boxsdfdsfdsfsfsdf my-video-xingxing" id="danmu" :style="{ height: boxHeight() }" >
+  	<div class="box boxsdfdsfdsfsfsdf my-video-xingxing"  :style="{ height: boxHeight() }" >
       <my-video></my-video>
       <!-- <div class="boxvideo animated pulse">
       </div> -->
       <!-- <div class="xing"></div> -->
       <!-- <div id="danmu" style="position: relative; width: 100%; height: 100%; background-color: rgba(0,0,0,0.2)"></div> -->
+      <transition name="bounce">
+        <div class="popup1" v-show="popup1State">
+          <div class="popup1-con">
+            <div class="popup1-con-text">
+              <div class="popup1-con-text-bg">
+                <div class="pctb1-text">
+                  <div class="pctb1-text-img animated pulse"></div>
+                </div>
+                <div class="pctb1-title">
+                  <div class="pctb1-title-img animated pulse"></div>
+                </div>
+                <div class="pctb1-button" onClick="window.appConfig.liwuDypOnClick()">
+                  <a class="pctb1-button-img animated pulse"></a>
+                </div>
+                <div class="gb" @click="popup1">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanbi"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="popup1-con-icon">
+              <div class="popup1-con-icon-img animated pulse"></div>
 
+            </div>
+
+          </div>
+
+        </div>
+      </transition>
+      <transition name="bounce2">
+        <div class="popup2" v-show="popup2State">
+          <div class="popup2-con">
+            <div class="popup2-con-text">
+              <div class="popup2-con-text-bg">
+                <div class="pctb2-text">
+                  <div class="pctb2-text-img animated pulse"></div>
+                </div>
+                <div class="pctb2-title">
+                  <div class="pctb2-title-img animated pulse"></div>
+                </div>
+                <div class="pctb2-button" onClick="window.appConfig.liwuOnClick()">
+                  <a class="pctb2-button-img animated pulse"></a>
+                </div>
+                <div class="gb" @click="popup2">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanbi"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="popup2-con-icon">
+              <div class="popup2-con-icon-img animated pulse"></div>
+
+            </div>
+
+          </div>
+        </div>
+      </transition>
+      <div id="danmu" class="danmusdfsdf23fsdfwr"></div>
       <div class="box-bottom">
         <div class="box-bottom-box" @click="liwuClick('#icon-xiaolian',true,0,4,'douwokaixin')">
           <div class="box-bottom-box-top one">
@@ -113,6 +172,9 @@
           <use  :xlink:href="item.data"></use>
         </svg>
       </liwu>
+
+
+
       <transition name="bounce">
         <div class="popup1" v-show="popup1State">
           <div class="popup1-con">
@@ -195,7 +257,7 @@ export default {
       return {
         imgDate: [p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon,p5AliceIcon],
         name: "Eric",
-        number: "12521",
+        number: 0,
         popup1State: false,
         popup2State: false,
         p5AliceIcon,
@@ -204,6 +266,7 @@ export default {
         progressFlag: null,
         taState: false,
         maskPlay: true,
+        sj: false,
       }
     },
 
@@ -251,8 +314,16 @@ export default {
 
       window.appConfig.weixinImgNan( ( data )=>{
 
+
+
         _this.imgDate= data.imgs;
         _this.number= data.num;
+        var rand;
+        setInterval(()=>{
+          rand= Math.floor( Math.random()*20 );
+          _this.number= _this.number + rand;
+        },1000)
+
 
       } );
 
@@ -285,19 +356,19 @@ export default {
         return $(window).height()+'px';
       },
       popup(){
-        let sj;
+
+        let sj= this.sj;
 
         let probability = window.appConfig.probability;
 
-
-        var rand = Math.random();
-        if (rand < probability){
-          sj=1;
-        }else {
-          sj=2;
+        if( !sj ){
+          var rand = Math.random();
+          if (rand < probability){
+            sj=1;
+          }else {
+            sj=2;
+          }
         }
-
-
 
         //1是电影票
         this[`popup${sj}State`]= !this[`popup${sj}State`];
@@ -482,6 +553,13 @@ export default {
       position: absolute;
       width: 100%;
       background: url(../../assets/eric.jpeg) no-repeat center / cover;
+      .danmusdfsdf23fsdfwr{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
       .boxvideo{
         position: absolute;
         width: rem(199);
