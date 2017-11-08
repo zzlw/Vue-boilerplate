@@ -69,7 +69,7 @@ export default {
       width: 100%;
       top: 0;
       overflow: hidden;
-      background: url(../../assets/eric.jpeg) no-repeat center / cover;
+
       transform: scale(1.2,1.3);
     }
     .bounce-enter-active{

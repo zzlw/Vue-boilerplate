@@ -1,5 +1,5 @@
 <template>
-  	<div class="box my-video-xingxing" id="danmu" :style="{ height: boxHeight() }" >
+  	<div class="boxsdfsdf23cxvxcvcxvc  my-video-xingxing" id="danmu" :style="{ height: boxHeight() }" >
       <my-video></my-video>
       <!-- <div class="boxvideo animated pulse">
       </div> -->
@@ -464,9 +464,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../style/mixin";
-.box {
+.boxsdfsdf23cxvxcvcxvc {
   position: absolute;
   width: 100%;
+  background: url(../../assets/alice.jpeg) no-repeat center / cover;
   .boxvideo {
     position: absolute;
     width: rem(199);

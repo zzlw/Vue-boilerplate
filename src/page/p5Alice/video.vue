@@ -1,5 +1,5 @@
 <template>
-  	<div ref="videoPlay" id="videoPlayBox" class="box" :style="{ height: heights }"  >
+  	<div ref="videoPlay" id="videoPlayBox" class="fsdfdsf234dsfsd" :style="{ height: heights }"  >
       <video :src="src" id="videoPlay" class="myVideo" width="100%" height="100%" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
     </div>
 </template>
@@ -67,12 +67,12 @@ export default {
 
 <style lang="scss" scoped>
     @import '../../style/mixin';
-    .box{
+    .fsdfdsf234dsfsd{
       position: absolute;
       width: 100%;
       top: 0;
       overflow: hidden;
-      background: url(../../assets/alice.jpeg) no-repeat center / cover;
+
       transform: scale(1.2,1.3);
     }
     .bounce-enter-active{
