@@ -662,6 +662,7 @@ export default {
               width: rem(71);
               height: rem(70);
               margin-left: rem(14);
+
               border-radius: 50%;
               overflow: hidden;
             }
