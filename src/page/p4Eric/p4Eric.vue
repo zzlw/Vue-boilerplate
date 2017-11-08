@@ -54,7 +54,7 @@ export default {
       width: 100%;
       // width: rem(640);
       // height: rem(1136);
-      background: url(../../images/p3Alice.png) no-repeat center / 100% 100%;
+      background: url(../../images/p3Alice.jpg) no-repeat center / 100% 100%;
       .pading{
         padding-top: rem(150);
         .box-head{

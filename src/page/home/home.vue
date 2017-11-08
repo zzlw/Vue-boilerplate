@@ -102,10 +102,10 @@ export default {
             z-index: -1;
             overflow: hidden;
             &.eric{
-              background: url(../../assets/eric.jpeg) no-repeat center / cover;
+              background: url(../../images/P1-Eric.png) no-repeat center / cover;
             }
             &.alice{
-              background: url(../../assets/alice.jpeg) no-repeat center / cover;
+              background: url(../../images/P1-Alice.png) no-repeat center / cover;
             }
           }
           &.active{
