@@ -91,7 +91,7 @@
             <div class="left" ></div>
             <div class="right">
               <div class="top">{{ name }}</div>
-              <div class="bottom"><span id="sjnv-length" >0</span> 人</div>
+              <div class="bottom"><span id="sjnv-length" >{{ number }}</span> 人</div>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@
                 <div class="pctb1-title">
                   <div class="pctb1-title-img animated pulse"></div>
                 </div>
-                <div class="pctb1-button" onClick="liwuDypOnClick()">
+                <div class="pctb1-button" onClick="window.appConfig.liwuDypOnClick()">
                   <a class="pctb1-button-img animated pulse"></a>
                 </div>
                 <div class="gb" @click="popup1">
@@ -149,7 +149,7 @@
                 <div class="pctb2-title">
                   <div class="pctb2-title-img animated pulse"></div>
                 </div>
-                <div class="pctb2-button" onClick="liwuOnClick()">
+                <div class="pctb2-button" onClick="window.appConfig.liwuOnClick()">
                   <a class="pctb2-button-img animated pulse"></a>
                 </div>
                 <div class="gb" @click="popup2">
@@ -270,7 +270,12 @@ export default {
       // console.log(this.userImg)
       // console.log(this.userImg.data)
 
-      weixinImgNv();
+      window.appConfig.weixinImgNv( ( data )=>{
+
+        _this.imgDate= data.imgs;
+        _this.number= data.num;
+
+      } );
 
     },
 
