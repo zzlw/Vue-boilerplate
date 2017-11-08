@@ -657,12 +657,10 @@ export default {
             justify-content: flex-start;
             flex-wrap: wrap;
             .img{
-              display: none;
               border: none;
               width: rem(71);
               height: rem(70);
               margin-left: rem(14);
-
               border-radius: 50%;
               overflow: hidden;
             }
