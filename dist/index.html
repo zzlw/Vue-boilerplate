@@ -1,10 +1,55 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name=screen-orientation content=portrait><meta name=apple-mobile-web-app-capable content=yes><meta name=format-detection content="telephone=no"><meta name=full-screen content=yes><meta name=x5-fullscreen content=true><title>I Love You</title><script src=//at.alicdn.com/t/font_461605_yyqbavz25qj8aor.js></script><link href=https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css rel=stylesheet><style type=text/css>.icon {
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no"><meta name=screen-orientation content=portrait><meta name=apple-mobile-web-app-capable content=yes><meta name=format-detection content="telephone=no"><meta name=full-screen content=yes><meta name=x5-fullscreen content=true><title>I Love You</title><script src=https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js></script><script src=//at.alicdn.com/t/font_461605_yyqbavz25qj8aor.js></script><link href=https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css rel=stylesheet><style type=text/css>.icon {
         width: 1em;
         height: 1em;
         vertical-align: -0.15em;
         fill: currentColor;
         overflow: hidden;
-      }</style><link href=static/css/app.53708d7ae92817b62da527da86392c0f.css rel=stylesheet></head><body><audio id=my-music-audio src=http://ovwyd2fb9.bkt.clouddn.com/%E5%BC%A0%E9%9F%B6%E6%B6%B5%20-%20%E6%B7%8B%E9%9B%A8%E4%B8%80%E7%9B%B4%E8%B5%B0.mp3 id=Jaudio class=media-audio preload loop=loop></audio><div id=app><router-view></router-view></div><script type=text/javascript src=static/js/manifest.ebdb6b9942531823a683.js></script><script type=text/javascript src=static/js/vendor.7f6a26e1db8934b22721.js></script><script type=text/javascript src=static/js/app.a934b96e28c37d0dc88c.js></script></body><script>function audioAutoPlay(id) {
+      }</style><script>var liwuOnClick= function() {     //礼物
+        console.log("礼物")
+      }
+
+      var liwuDypOnClick = function () {
+        console.log("电影票")    //电影票
+      }</script><script>var _this = this;
+
+      //男生游客头像
+      function weixinImgNv() {
+
+        var fnImgNv = function() {
+          var ImgNv = $("#weixinImgNv").find(".nv").each(function (index, item) {
+            console.log(index, $(item).attr("src"));
+
+            // $(item).attr("src","img")
+            //img 为你的图片路径;
+          });
+        }
+        //如有异步， fnImgNv 请放在异步请求成功后调用
+        fnImgNv();
+
+
+      }
+
+
+
+
+       //女生游客头像
+      function weixinImgNan() {
+
+        var fnImgNan = function () {
+
+          var ImgNan = $("#weixinImgNan").find(".nan").each(function (index,item) {
+            console.log(index, $(item).attr("src"));
+
+            // $(item).attr("src","img")
+            //img 为你的图片路径;
+          });
+
+        }
+
+        //如有异步， fnImgNan 请放在异步请求成功后调用
+        fnImgNan();
+
+      }</script><link href=static/css/app.498df3cf950152c3b1939ef7e924ecf8.css rel=stylesheet></head><body><audio id=my-music-audio src=http://ovwyd2fb9.bkt.clouddn.com/%E5%BC%A0%E9%9F%B6%E6%B6%B5%20-%20%E6%B7%8B%E9%9B%A8%E4%B8%80%E7%9B%B4%E8%B5%B0.mp3 id=Jaudio class=media-audio preload loop=loop></audio><div id=app><router-view></router-view></div><script type=text/javascript src=static/js/manifest.68ee332c9e35fa5ce3b5.js></script><script type=text/javascript src=static/js/vendor.7f6a26e1db8934b22721.js></script><script type=text/javascript src=static/js/app.f5968282d6dd6bfae80d.js></script></body><script>function audioAutoPlay(id) {
           var audio = document.getElementById(id),
             play = function () {
               audio.play();

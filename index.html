@@ -9,6 +9,7 @@
     <meta name="full-screen" content="yes">
     <meta name="x5-fullscreen" content="true">
     <title> I Love You </title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="//at.alicdn.com/t/font_461605_yyqbavz25qj8aor.js"></script>
     <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <style type="text/css">
@@ -20,6 +21,61 @@
         overflow: hidden;
       }
     </style>
+    <script>
+      var liwuOnClick= function() {     //礼物
+        console.log("礼物")
+      }
+
+      var liwuDypOnClick = function () {
+        console.log("电影票")    //电影票
+      }
+    </script>
+
+    <script>
+      var _this = this;
+
+      //男生游客头像
+      function weixinImgNv() {
+
+        var fnImgNv = function() {
+          var ImgNv = $("#weixinImgNv").find(".nv").each(function (index, item) {
+            console.log(index, $(item).attr("src"));
+
+            // $(item).attr("src","img")
+            //img 为你的图片路径;
+          });
+        }
+        //如有异步， fnImgNv 请放在异步请求成功后调用
+        fnImgNv();
+
+
+      }
+
+
+
+
+       //女生游客头像
+      function weixinImgNan() {
+
+        var fnImgNan = function () {
+
+          var ImgNan = $("#weixinImgNan").find(".nan").each(function (index,item) {
+            console.log(index, $(item).attr("src"));
+
+            // $(item).attr("src","img")
+            //img 为你的图片路径;
+          });
+
+        }
+
+        //如有异步， fnImgNan 请放在异步请求成功后调用
+        fnImgNan();
+
+      }
+
+
+
+    </script>
   </head>
   <body>
     <audio id="my-music-audio" src="http://ovwyd2fb9.bkt.clouddn.com/%E5%BC%A0%E9%9F%B6%E6%B6%B5%20-%20%E6%B7%8B%E9%9B%A8%E4%B8%80%E7%9B%B4%E8%B5%B0.mp3"
@@ -48,5 +104,7 @@
         }
         audioAutoPlay("my-music-audio");
       </script>
+
+
 
 </html>

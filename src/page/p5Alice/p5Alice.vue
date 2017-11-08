@@ -96,8 +96,10 @@
           </div>
         </div>
         <div class="box-head-right">
-          <ul class="imgbox">
-            <li class="img"  v-for="(item, index) in imgDate" :key="index" :style="{ background: `url(${item}) repeat center / cover` }" ></li>
+          <ul class="imgbox" id="weixinImgNv">
+           <li class="img"  v-for="(item, index) in imgDate" :key="index" >
+              <img class="nv"  :src="item" width="100%" height="100%" :style="{ display: 'block' }" />
+            </li>
           </ul>
         </div>
       </div>
@@ -117,7 +119,7 @@
                 <div class="pctb1-title">
                   <div class="pctb1-title-img animated pulse"></div>
                 </div>
-                <div class="pctb1-button">
+                <div class="pctb1-button" onClick="liwuDypOnClick()">
                   <a class="pctb1-button-img animated pulse"></a>
                 </div>
                 <div class="gb" @click="popup1">
@@ -147,7 +149,7 @@
                 <div class="pctb2-title">
                   <div class="pctb2-title-img animated pulse"></div>
                 </div>
-                <div class="pctb2-button">
+                <div class="pctb2-button" onClick="liwuOnClick()">
                   <a class="pctb2-button-img animated pulse"></a>
                 </div>
                 <div class="gb" @click="popup2">
@@ -267,6 +269,8 @@ export default {
       // await this.getUserImg();
       // console.log(this.userImg)
       // console.log(this.userImg.data)
+
+      weixinImgNv();
 
     },
 
@@ -435,7 +439,6 @@ export default {
 
         video.currentTime= start;
         video.play();
-
 
         let _currentTime= setInterval(()=>{
           if(video.currentTime==start){

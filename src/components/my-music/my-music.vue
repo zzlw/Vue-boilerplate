@@ -34,7 +34,6 @@ export default {
       let el= $("#my-music-audio")[0];
       if( el ){
         if( this.isMusic.play){
-          console.log(this.isMusic.play,2)
           $("#my-music-audio")[0].play();
           $(".my-music").addClass("play");
         }else{

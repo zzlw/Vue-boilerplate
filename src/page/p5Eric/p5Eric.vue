@@ -101,8 +101,10 @@
           </div>
         </div>
         <div class="box-head-right">
-          <ul class="imgbox">
-            <li class="img"  v-for="(item, index) in imgDate" :key="index" :style="{ background: `url(${item}) repeat center / cover` }" ></li>
+          <ul class="imgbox" id="weixinImgNan">
+            <li class="img"  v-for="(item, index) in imgDate" :key="index" >
+              <img class="nan"  :src="item" width="100%" height="100%" :style="{ display: 'block' }" />
+            </li>
           </ul>
         </div>
       </div>
@@ -122,7 +124,7 @@
                 <div class="pctb1-title">
                   <div class="pctb1-title-img animated pulse"></div>
                 </div>
-                <div class="pctb1-button">
+                <div class="pctb1-button" onClick="liwuDypOnClick()">
                   <a class="pctb1-button-img animated pulse"></a>
                 </div>
                 <div class="gb" @click="popup1">
@@ -152,7 +154,7 @@
                 <div class="pctb2-title">
                   <div class="pctb2-title-img animated pulse"></div>
                 </div>
-                <div class="pctb2-button">
+                <div class="pctb2-button" onClick="liwuOnClick()">
                   <a class="pctb2-button-img animated pulse"></a>
                 </div>
                 <div class="gb" @click="popup2">
@@ -272,6 +274,8 @@ export default {
       // console.log(this.userImg.data)
 
 
+      weixinImgNan();
+
     },
 
     components:{
@@ -367,10 +371,10 @@ export default {
         // $('img:eq('+index+')').attr("src",p5AliceIcon);
         // var imgItem = $(".my-video-xingxing > div.dz:last-of-type");
         el.stop().animate({
-            bottom: this.rem(height+100),
+            bottom: this.rem(height-200),
             opacity: .3,
-            left: this.rem(rand),
-        },3000,"linear",function(){
+            left: this.rem(rand+260),
+        },1500,"linear",function(){
             $(this).remove();
         });
       },
