@@ -34,13 +34,16 @@
     <script>
       var _this = this;
 
-      //男生游客头像
+
+       //女生游客头像
       function weixinImgNv() {
 
         var fnImgNv = function() {
           var ImgNv = $("#weixinImgNv").find(".nv").each(function (index, item) {
-            console.log(index, $(item).attr("src"));
 
+            let sjnvLength = $("#sjnv-length").text(11111);//人数
+
+            console.log(index, $(item).attr("src"), sjnvLength);
             // $(item).attr("src","img")
             //img 为你的图片路径;
           });
@@ -54,14 +57,16 @@
 
 
 
-       //女生游客头像
+      //男生游客头像
       function weixinImgNan() {
 
         var fnImgNan = function () {
 
           var ImgNan = $("#weixinImgNan").find(".nan").each(function (index,item) {
-            console.log(index, $(item).attr("src"));
 
+            let sjnanLength = $("#sjnan-length").text(9999);//人数
+
+            console.log(index, $(item).attr("src"), sjnanLength);
             // $(item).attr("src","img")
             //img 为你的图片路径;
           });

@@ -96,7 +96,7 @@
             <div class="left" ></div>
             <div class="right">
               <div class="top">{{ name }}</div>
-              <div class="bottom"><span id="sj-length" >0</span> 人</div>
+              <div class="bottom"><span id="sjnan-length" >0</span> 人</div>
             </div>
           </div>
         </div>
@@ -232,24 +232,24 @@ export default {
       _this.getLoading();
 
 
-      //观看人数波动
-      let sjmax= Math.floor(Math.random()*10000000)+100000;
-      let sjLength= $("#sj-length").text(sjmax);
-      // let time= Math.floor(Math.random()*1000)+100;
-      let fn= ()=>{
-        setTimeout(function() {
-          // let sj;
-          // if(Math.floor(Math.random()*2)){
-            let sj= parseInt(sjLength.text())+Math.floor(Math.random()*2000);
-            // console.log(sj)
-          // }else{
-            // sj= parseInt(sjLength.text())+Math.floor(Math.random()*-300);
-          // }
-          sjLength.text(`${sj}`);
-          fn()
-        }, 300);
-      }
-      fn();
+      // //观看人数波动
+      // let sjmax= Math.floor(Math.random()*10000000)+100000;
+      // let sjnanLength= $("#sjnan-length").text(sjmax);
+      // // let time= Math.floor(Math.random()*1000)+100;
+      // let fn= ()=>{
+      //   setTimeout(function() {
+      //     // let sj;
+      //     // if(Math.floor(Math.random()*2)){
+      //       let sj= parseInt(sjLength.text())+Math.floor(Math.random()*2000);
+      //       // console.log(sj)
+      //     // }else{
+      //       // sj= parseInt(sjLength.text())+Math.floor(Math.random()*-300);
+      //     // }
+      //     sjLength.text(`${sj}`);
+      //     fn()
+      //   }, 300);
+      // }
+      // fn();
 
       // let sjTime= Math.random()*2000
       let dzfn= ()=>{
