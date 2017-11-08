@@ -1,24 +1,31 @@
 <template>
   	<div ref="videoPlay" id="videoPlayBox" class="box" :style="{ height: heights }"  >
-      <video :src="zhubo" id="videoPlay" class="myVideo" width="100%" height="100%" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
+      <video :src="src" id="videoPlay" class="myVideo" width="100%" height="100%" x5-video-player-type="h5" x5-video-player-fullscreen="true" x5-playsinline="" playsinline="" webkit-playsinline="" poster="" preload="auto"></video>
     </div>
 </template>
 
 <script>
 import $ from "jquery";
-import zhubo from "../../assets/Alice-动画合成.mp4"
+import src from "../../assets/Alice-动画合成.mp4"
 // import alice from "../../assets/alice.jpeg"
 export default {
     // props:["height"],
     data(){
-        return {
-          data: {},
-          zhubo,
-          // alice,
-          mask: true,
-          state: false,
-          heights: $(window).height()+'px',
-        }
+      let data= {
+        src,
+        // alice,
+        mask: true,
+        state: false,
+        heights: $(window).height()+'px',
+      }
+
+      if (process.env.NODE_ENV == 'development') {
+
+      }else if(process.env.NODE_ENV == 'production'){
+        data.src= `${appConfig.assetsPrefix}/static/media/Alice-动画合成.mp4`;
+      }
+
+      return data
     },
 
 	  mounted(){
